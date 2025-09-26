@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWay - Premium Flight Booking Experience</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Breadcrumb -->
+    <nav class="absolute top-4 left-4 z-50" id="breadcrumb"></nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Hero Background -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-700/90 to-primary-900/90"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4" data-aos="fade-up">
+            <div class="text-center text-white space-y-6">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Your Journey Begins Here</h1>
+                <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+                    Discover seamless travel experiences with our premium flight booking service
+                </p>
+
+                <!-- Flight Search Form -->
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="card bg-white/90 backdrop-blur-md">
+                        <form id="flightSearchForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- From -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">From</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Departure City"
+                                           id="departureCity">
+                                </div>
+                                
+                                <!-- To -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">To</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Arrival City"
+                                           id="arrivalCity">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <!-- Departure Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Departure</label>
+                                    <input type="date" 
+                                           class="input-field" 
+                                           id="departureDate">
+                                </div>
+
+                                <!-- Return Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Return</label>
+                                    <input type="date" 
+                                           class="input-field" 
+                                           id="returnDate">
+                                </div>
+
+                                <!-- Passengers -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Passengers</label>
+                                    <select class="input-field" id="passengers">
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2">2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5+ Passengers</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <button type="submit" class="btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M3.64 14.26l2.86.95 4.02-4.02-8-4.59 1.16-1.16c.1-.1.26-.14.41-.1l9.3 2.98c1.58-1.58 3.15-3.2 4.77-4.75.31-.33.7-.58 1.16-.73.45-.16.94-.2 1.42-.13.48.07.93.27 1.28.58.35.31.58.7.73 1.16.16.45.2.94.13 1.42-.07.48-.27.93-.58 1.28l-4.75 4.77 2.98 9.3c.05.15 0 .31-.1.41l-1.16 1.16-4.59-8-4.02 4.02.95 2.86L2.1 17.9l.99-2.99 5.02-5.02c.05-.05.12-.08.19-.1.07-.01.15-.01.22.02l4.88 2.78-2.78-4.88c-.03-.07-.04-.15-.02-.22.01-.07.05-.14.1-.19l5.02-5.02.54-.54c.05-.05.09-.12.11-.2.02-.07.01-.15-.02-.22-.04-.07-.09-.12-.16-.17-.07-.04-.15-.07-.23-.07-.09 0-.16.02-.23.06-.07.04-.13.09-.17.15l-4.75 4.75-9.3-2.98c-.15-.05-.31 0-.41.1l-1.16 1.16 8 4.59-4.02 4.02-.95 2.86z"/>
+                                    </svg>
+                                    Search Flights
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="py-20 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Popular Destinations</h2>
+            <div id="destinationsGrid" class="bento-grid"></div>
+        </div>
+    </section>
+
+    <!-- Promotional Carousel -->
+    <section class="py-20 bg-gradient-to-r from-primary-50 to-primary-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Special Offers</h2>
+            <div id="offersCarousel" class="max-w-4xl mx-auto">
+                <div class="carousel"></div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        // Initialize breadcrumb
+        const breadcrumbItems = [
+            { text: 'Home', href: '/' },
+            { text: 'Flight Search', href: '#search' }
+        ];
+        const breadcrumb = UI.createBreadcrumb(breadcrumbItems);
+        document.getElementById('breadcrumb').appendChild(breadcrumb);
+
+        // Initialize destinations grid
+        const destinations = [
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/londan.png" class="w-full h-full object-cover" alt="London">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">London</h3>
+                            <p class="text-sm">Experience the charm of British culture</p>
+                        </div>
+                    </div>
+                `,
+                large: true
+            },
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/maldives.png" class="w-full h-full object-cover" alt="Maldives">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Maldives</h3>
+                            <p class="text-sm">Paradise on Earth</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/desertimage.png" class="w-full h-full object-cover" alt="Dubai">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Dubai</h3>
+                            <p class="text-sm">Modern luxury meets tradition</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        const bentoGrid = UI.createBentoGrid(destinations);
+        document.getElementById('destinationsGrid').appendChild(bentoGrid);
+
+        // Initialize carousel
+        const carouselContainer = document.querySelector('.carousel');
+        const offers = [
+            { image: '/images/plan-1.jpg', title: 'Summer Special', description: 'Up to 30% off on international flights' },
+            { image: '/images/plan-2.jpg', title: 'Business Class', description: 'Premium comfort at special rates' },
+            { image: '/images/plan-3.jpg', title: 'Family Package', description: 'Kids fly free on selected routes' }
+        ];
+
+        offers.forEach(offer => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-item';
+            slide.innerHTML = `
+                <div class="relative h-96">
+                    <img src="${offer.image}" class="w-full h-full object-cover rounded-xl" alt="${offer.title}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <h3 class="text-3xl font-bold mb-2">${offer.title}</h3>
+                        <p class="text-lg">${offer.description}</p>
+                    </div>
+                </div>
+            `;
+            carouselContainer.appendChild(slide);
+        });
+
+        // Initialize carousel with autoplay
+        const carousel = new UI.Carousel(carouselContainer, {
+            autoplay: true,
+            interval: 5000
+        });
+
+        // Form submission handler
+        document.getElementById('flightSearchForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            UI.showSnackbar('Searching for flights...', 'info');
+            // Add your search logic here
+        });
+    </script>
+</body>
+</html>

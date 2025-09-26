@@ -1,0 +1,48 @@
+<!-- public/passenger.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Passenger Details — Flight Booking</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Passenger Details</h1>
+      <a href="/Homepage.html" class="small">← Back to search</a>
+    </header>
+
+    <div id="flightSummary" class="search-card section">
+      Loading flight...
+    </div>
+
+    <div class="search-card section">
+      <form id="passengerForm">
+        <div class="form-grid">
+          <input id="name" placeholder="Full name" required>
+          <input id="phone" placeholder="Phone (10 digits)" required>
+          <input id="email" placeholder="Email" required>
+          <input id="age" type="number" placeholder="Age" required>
+          <input id="aadhar" placeholder="Aadhar (12 digits)" required>
+          <select id="gender" required>
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <input id="dob" type="date" placeholder="Date of Birth">
+          <input id="address" placeholder="Address" required>
+        </div>
+
+        <div style="margin-top:12px;">
+          <button class="btn" type="submit">Continue to Seat Selection</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/booking.js"></script>
+</body>
+</html>

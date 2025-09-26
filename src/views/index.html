@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-gray-800">FlightBook</a>
+                <div>
+                    <a href="/login.html" class="text-gray-800 hover:text-blue-500 mx-2">Login</a>
+                    <a href="/signup.html" class="text-gray-800 hover:text-blue-500 mx-2">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800">Find Your Next Flight</h1>
+        <p class="text-center text-gray-600 mt-2">Book commercial flights, private jets, and helicopters.</p>
+
+        <!-- Search Form -->
+        <div class="mt-8 max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+            <form>
+                <!-- One-way, Round-trip, Multi-city tabs -->
+                <div class="flex justify-center mb-4">
+                    <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-l-lg">One-way</button>
+                    <button type="button" class="px-4 py-2 text-gray-700 bg-gray-200">Round-trip</button>
+                    <button type="button" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-r-lg">Multi-city</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="From" class="w-full p-3 border rounded-lg">
+                    <input type="text" placeholder="To" class="w-full p-3 border rounded-lg">
+                    <input type="date" class="w-full p-3 border rounded-lg">
+                    <input type="date" placeholder="Return" class="w-full p-3 border rounded-lg" disabled>
+                    <select class="w-full p-3 border rounded-lg">
+                        <option>1 Passenger</option>
+                        <option>2 Passengers</option>
+                        <option>3 Passengers</option>
+                    </select>
+                    <select class="w-full p-3 border rounded-lg">
+                        <option>Economy</option>
+                        <option>Business</option>
+                        <option>First Class</option>
+                    </select>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button type="submit" class="w-full md:w-auto px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Search Flights</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

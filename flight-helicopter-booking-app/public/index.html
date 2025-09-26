@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Helicopter & Private Jet Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Navigation Breadcrumb -->
+    <nav class="absolute top-4 left-4 z-50" id="breadcrumb"></nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Hero Background with Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-800/90 to-primary-900/90">
+            <video class="absolute inset-0 w-full h-full object-cover mix-blend-overlay" autoplay loop muted playsinline>
+                <source src="videos/helicopter.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4" data-aos="fade-up">
+            <div class="text-center text-white space-y-6">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Luxury in the Sky</h1>
+                <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+                    Experience exclusive helicopter tours and private jet charters
+                </p>
+
+                <!-- Booking Options -->
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="card bg-white/90 backdrop-blur-md">
+                        <form id="booking-form" class="space-y-6">
+                            <!-- Service Type -->
+                            <div class="flex justify-center space-x-4">
+                                <button type="button" class="btn-primary active" data-service="helicopter">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5z"></path>
+                                    </svg>
+                                    Helicopter Tour
+                                </button>
+                                <button type="button" class="btn-secondary" data-service="jet">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 18l3.5-2 3.5 2L15 16l3 2V8l-3-2-3 2-3.5-2L5 8v10z"></path>
+                                    </svg>
+                                    Private Jet
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- From -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Departure</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Departure Location"
+                                           id="departure">
+                                </div>
+                                
+                                <!-- To -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Destination</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Destination Location"
+                                           id="destination">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <!-- Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Date</label>
+                                    <input type="date" 
+                                           class="input-field" 
+                                           id="date">
+                                </div>
+
+                                <!-- Time -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Time</label>
+                                    <input type="time" 
+                                           class="input-field" 
+                                           id="time">
+                                </div>
+
+                                <!-- Passengers -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Passengers</label>
+                                    <select class="input-field" id="passengers">
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2">2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5+ Passengers</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Additional Options -->
+                            <div class="space-y-4">
+                                <label class="block text-sm font-medium text-gray-700">Additional Services</label>
+                                <div class="flex flex-wrap gap-2" id="services-chips">
+                                    <!-- Chips will be added here dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <button type="submit" class="btn-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Book Now
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
+            <div id="servicesGrid" class="bento-grid"></div>
+        </div>
+    </section>
+
+    <!-- Featured Experiences -->
+    <section class="py-20 bg-gradient-to-r from-primary-50 to-primary-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Featured Experiences</h2>
+            <div id="experiencesCarousel" class="max-w-4xl mx-auto">
+                <div class="carousel"></div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { showSnackbar, Carousel, createBreadcrumb, createSkeleton, initScrollProgress, createChip, createBentoGrid } from '/js/ui-components.js';
+
+        // Initialize scroll progress
+        initScrollProgress();
+
+        // Initialize breadcrumb
+        const breadcrumbItems = [
+            { text: 'Home', href: '/' },
+            { text: 'Book', href: '#booking' }
+        ];
+        document.getElementById('breadcrumb').appendChild(createBreadcrumb(breadcrumbItems));
+
+        // Initialize services grid
+        const serviceItems = [
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/helicopter-tour.jpg" class="w-full h-full object-cover" alt="City Tour">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">City Tours</h3>
+                            <p class="text-sm">Experience the city from above</p>
+                        </div>
+                    </div>
+                `,
+                large: true
+            },
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/private-jet.jpg" class="w-full h-full object-cover" alt="Private Jet">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Private Jets</h3>
+                            <p class="text-sm">Luxury travel redefined</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                content: `
+                    <div class="relative h-full">
+                        <img src="/images/corporate.jpg" class="w-full h-full object-cover" alt="Corporate">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Corporate</h3>
+                            <p class="text-sm">Business travel solutions</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        document.getElementById('servicesGrid').appendChild(createBentoGrid(services));
+
+        // Initialize carousel
+        const carouselContainer = document.querySelector('.carousel');
+        const experiences = [
+            { image: '/images/experience1.jpg', title: 'Sunset Tour', description: 'Breathtaking views of the sunset from above' },
+            { image: '/images/experience2.jpg', title: 'Alpine Adventure', description: 'Mountain exploration by helicopter' },
+            { image: '/images/experience3.jpg', title: 'Coastal Journey', description: 'Scenic flights along the coastline' }
+        ];
+
+        experiences.forEach(exp => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-item';
+            slide.innerHTML = `
+                <div class="relative h-96">
+                    <img src="${exp.image}" class="w-full h-full object-cover rounded-xl" alt="${exp.title}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <h3 class="text-3xl font-bold mb-2">${exp.title}</h3>
+                        <p class="text-lg">${exp.description}</p>
+                    </div>
+                </div>
+            `;
+            carouselContainer.appendChild(slide);
+        });
+
+        // Initialize carousel with autoplay
+        const carousel = new Carousel(carouselContainer, {
+            autoplay: true,
+            interval: 5000
+        });
+
+        // Initialize service chips
+        const serviceOptions = ['Champagne Service', 'Photo Package', 'Extended Tour', 'Private Guide'];
+        const chipsContainer = document.getElementById('services-chips');
+        services.forEach(service => {
+            const chip = createChip(service, {
+                removable: true,
+                onRemove: (text) => console.log(`Removed service: ${text}`)
+            });
+            chipsContainer.appendChild(chip);
+        });
+
+        // Form submission handler
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showSnackbar('Processing your booking...', 'info');
+            // Add your booking logic here
+        });
+
+        // Service type toggle
+        document.querySelectorAll('[data-service]').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('[data-service]').forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-secondary');
+                });
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary');
+            });
+        });
+    </script>
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700">Date:</label>
+                <input type="date" id="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+            </div>
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Search</button>
+        </form>
+        <div id="results" class="mt-4"></div>
+    </main>
+    <footer class="bg-blue-600 text-white text-center p-4 mt-4">
+        <p>&copy; 2023 Flight and Helicopter Booking. All rights reserved.</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>

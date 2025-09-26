@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWay - Premium Flight Booking Experience</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Breadcrumb -->
+    <nav class="absolute top-4 left-4 z-50" id="breadcrumb"></nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Hero Background -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-700/90 to-primary-900/90"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4" data-aos="fade-up">
+            <div class="text-center text-white space-y-6">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Your Journey Begins Here</h1>
+                <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+                    Discover seamless travel experiences with our premium flight booking service
+                </p>
+
+                <!-- Flight Search Form -->
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="card bg-white/90 backdrop-blur-md">
+                        <form id="flightSearchForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- From -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">From</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Departure City"
+                                           id="departureCity">
+                                </div>
+                                
+                                <!-- To -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">To</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="Arrival City"
+                                           id="arrivalCity">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <!-- Departure Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Departure</label>
+                                    <input type="date" 
+                                           class="input-field" 
+                                           id="departureDate">
+                                </div>
+
+                                <!-- Return Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Return</label>
+                                    <input type="date" 
+                                           class="input-field" 
+                                           id="returnDate">
+                                </div>
+
+                                <!-- Passengers -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Passengers</label>
+                                    <select class="input-field" id="passengers">
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2">2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5+ Passengers</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <button type="submit" class="btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    Search Flights
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </video>
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-5xl mx-auto px-4">
+            <h1 class="text-5xl md:text-7xl font-display font-bold mb-6" data-aos="fade-down">
+                Your Journey Begins Here
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-200" data-aos="fade-up" data-aos-delay="200">
+                Book flights, private jets, and helicopters with ease
+            </p>
+
+            <!-- Search Form -->
+            <div class="bg-white/90 backdrop-blur-md rounded-2xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                <form class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">From</label>
+                        <input type="text" class="input-field" placeholder="City or Airport">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">To</label>
+                        <input type="text" class="input-field" placeholder="City or Airport">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Date</label>
+                        <input type="date" class="input-field">
+                    </div>
+                    <button type="submit" class="btn-primary self-end">
+                        Search Flights
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-display font-bold text-center mb-12" data-aos="fade-up">
+                Choose Your Way to Fly
+            </h2>
+
+            <!-- Bento Grid -->
+            <div class="bento-grid" data-aos="fade-up" data-aos-delay="200">
+                <!-- Commercial Flights -->
+                <div class="card group hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+                        <img src="/images/commercial.jpg" alt="Commercial Flight" class="object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Commercial Flights</h3>
+                    <p class="text-gray-600">Book flights from major airlines worldwide</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="chip">Economy</span>
+                        <span class="chip">Business</span>
+                        <span class="chip">First Class</span>
+                    </div>
+                </div>
+
+                <!-- Private Jets -->
+                <div class="card group hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+                        <img src="/images/private-jet.jpg" alt="Private Jet" class="object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Private Jets</h3>
+                    <p class="text-gray-600">Experience luxury and convenience</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="chip">Custom Routes</span>
+                        <span class="chip">VIP Service</span>
+                    </div>
+                </div>
+
+                <!-- Helicopters -->
+                <div class="card group hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+                        <img src="/images/helicopter.jpg" alt="Helicopter" class="object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Helicopters</h3>
+                    <p class="text-gray-600">Quick transfers and scenic flights</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="chip">City Transfers</span>
+                        <span class="chip">Sightseeing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-display font-bold text-center mb-12" data-aos="fade-up">
+                Popular Destinations
+            </h2>
+
+            <!-- Destination Carousel -->
+            <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <!-- Destination Cards -->
+                    <div class="swiper-slide p-4">
+                        <div class="card overflow-hidden">
+                            <div class="relative">
+                                <img src="/images/paris.jpg" alt="Paris" class="w-full h-64 object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-2xl font-bold">Paris</h3>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more destination slides -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-display font-bold text-center mb-12" data-aos="fade-up">
+                Why Choose SkyWay
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200">
+                <!-- Feature 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 text-primary-600">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Secure Booking</h3>
+                    <p class="text-gray-600">Safe and encrypted transactions for peace of mind</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 text-primary-600">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock assistance for all your travel needs</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 text-primary-600">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Best Prices</h3>
+                    <p class="text-gray-600">Competitive rates and exclusive deals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initialize Swiper -->
+    <script>
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+            autoplay: {
+                delay: 3000,
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SkyWay Flight Booking</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center p-4"
+      x-data="{ loading: true, email: '', password: '', showPassword: false }">
+    
+    <!-- Loading Skeleton -->
+    <div x-show="loading" 
+         x-init="setTimeout(() => loading = false, 1000)"
+         class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="space-y-4 w-64">
+            <div class="h-8 skeleton rounded-lg w-3/4 mx-auto"></div>
+            <div class="h-4 skeleton rounded w-full"></div>
+            <div class="h-4 skeleton rounded w-5/6"></div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="fixed top-20 left-4 right-4 max-w-7xl mx-auto px-4" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/" class="breadcrumb-item">Home</a>
+            </li>
+            <span class="breadcrumb-separator">/</span>
+            <li>
+                <span class="text-gray-800" aria-current="page">Login</span>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="w-full max-w-md" x-show="!loading" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-4"
+         x-transition:enter-end="opacity-100 transform translate-y-0">
+        
+        <div class="card backdrop-blur-lg bg-white/80 p-8">
+            <div class="text-center mb-8" data-aos="fade-down">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
+                <p class="text-gray-600">Sign in to continue your journey</p>
+            </div>
+
+            <form @submit.prevent="handleLogin" class="space-y-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="space-y-2">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <div class="relative">
+                        <input 
+                            type="email" 
+                            id="email"
+                            x-model="email"
+                            class="input-field pl-10"
+                            required
+                            autocomplete="email">
+                        <span class="absolute left-3 top-3.5 text-gray-400">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <div class="relative">
+                        <input 
+                            :type="showPassword ? 'text' : 'password'"
+                            id="password"
+                            x-model="password"
+                            class="input-field pl-10 pr-10"
+                            required>
+                        <span class="absolute left-3 top-3.5 text-gray-400">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </span>
+                        <button 
+                            type="button"
+                            @click="showPassword = !showPassword"
+                            class="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path x-show="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path x-show="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                <path x-show="showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-primary-600">
+                        <span class="ml-2 text-gray-600">Remember me</span>
+                    </label>
+                    <a href="/forgot-password" class="text-primary-600 hover:text-primary-700">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-primary w-full">
+                    Sign in
+                </button>
+
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <img src="/images/google.svg" alt="Google" class="h-5 w-5 mr-2">
+                        Google
+                    </button>
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <img src="/images/facebook.svg" alt="Facebook" class="h-5 w-5 mr-2">
+                        Facebook
+                    </button>
+                </div>
+            </form>
+
+            <p class="mt-8 text-center text-gray-600">
+                Don't have an account? 
+                <a href="/signup" class="text-primary-600 hover:text-primary-700 font-medium">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            // Add your login logic here
+            showSnackbar('Logging in...', 2000);
+        }
+    </script>
+</body>
+</html>

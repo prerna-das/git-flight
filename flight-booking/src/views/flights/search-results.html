@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - SkyWay</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50" x-data="{ 
+    loading: true,
+    showFilters: false,
+    selectedClass: 'all',
+    priceRange: 1000,
+    sortBy: 'price',
+    flights: [] 
+}">
+    <!-- Loading Skeleton -->
+    <div x-show="loading" 
+         x-init="setTimeout(() => { loading = false; flights = getSampleFlights(); }, 1500)"
+         class="fixed inset-0 bg-white z-50 p-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="space-y-4">
+                <div class="h-8 skeleton rounded-lg w-1/4"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="h-48 skeleton rounded-lg"></div>
+                    <div class="h-48 skeleton rounded-lg"></div>
+                    <div class="h-48 skeleton rounded-lg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Page -->
+    <div x-show="!loading" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100">
+        
+        <!-- Breadcrumb -->
+        <nav class="bg-white border-b" aria-label="Breadcrumb">
+            <div class="max-w-7xl mx-auto px-4 py-3">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/" class="breadcrumb-item">Home</a>
+                    </li>
+                    <span class="breadcrumb-separator">/</span>
+                    <li>
+                        <a href="/flights" class="breadcrumb-item">Flights</a>
+                    </li>
+                    <span class="breadcrumb-separator">/</span>
+                    <li>
+                        <span class="text-gray-800" aria-current="page">Search Results</span>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Search Summary -->
+        <div class="bg-white border-b shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="chip">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        New York (JFK)
+                    </div>
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                    <div class="chip">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        London (LHR)
+                    </div>
+                    <div class="chip">
+                        Sept 30, 2025
+                    </div>
+                    <div class="chip">
+                        2 Passengers
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <div class="lg:w-64 space-y-6">
+                    <div class="card">
+                        <h3 class="font-bold text-lg mb-4">Filters</h3>
+                        
+                        <!-- Price Range -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Price Range</label>
+                            <input 
+                                type="range" 
+                                x-model="priceRange"
+                                min="0" 
+                                max="2000" 
+                                class="w-full"
+                            >
+                            <div class="flex justify-between text-sm text-gray-600">
+                                <span>$0</span>
+                                <span x-text="'$' + priceRange"></span>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Class Filter -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Class</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" x-model="selectedClass" value="all" class="mr-2">
+                                    All Classes
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" x-model="selectedClass" value="economy" class="mr-2">
+                                    Economy
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" x-model="selectedClass" value="business" class="mr-2">
+                                    Business
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" x-model="selectedClass" value="first" class="mr-2">
+                                    First Class
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Airlines Filter -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Airlines</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    Emirates
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    British Airways
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    Lufthansa
+                                </label>
+                                <!-- Add more airlines -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="flex-1">
+                    <!-- Sort Options -->
+                    <div class="flex justify-between items-center mb-6">
+                        <p class="text-gray-600">
+                            <span x-text="flights.length"></span> flights found
+                        </p>
+                        <select x-model="sortBy" class="input-field w-auto">
+                            <option value="price">Price: Low to High</option>
+                            <option value="-price">Price: High to Low</option>
+                            <option value="duration">Duration: Shortest</option>
+                            <option value="departure">Departure: Earliest</option>
+                        </select>
+                    </div>
+
+                    <!-- Flight Cards -->
+                    <div class="space-y-4">
+                        <template x-for="flight in sortedFlights" :key="flight.id">
+                            <div class="card hover:shadow-xl transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                                    <!-- Airline Info -->
+                                    <div class="flex items-center space-x-4">
+                                        <img :src="flight.airlinelogo" :alt="flight.airline" class="w-16 h-16 object-contain">
+                                        <div>
+                                            <h3 class="font-bold" x-text="flight.airline"></h3>
+                                            <p class="text-sm text-gray-600" x-text="flight.flightNumber"></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flight Details -->
+                                    <div class="flex-1 flex flex-col md:flex-row items-center justify-between gap-4">
+                                        <div class="text-center">
+                                            <p class="text-2xl font-bold" x-text="flight.departureTime"></p>
+                                            <p class="text-sm text-gray-600" x-text="flight.origin"></p>
+                                        </div>
+
+                                        <div class="flex flex-col items-center">
+                                            <p class="text-sm text-gray-600" x-text="flight.duration"></p>
+                                            <div class="relative w-32 md:w-48">
+                                                <div class="absolute inset-y-1/2 w-full border-t border-gray-300"></div>
+                                                <div class="absolute inset-y-1/2 w-2 h-2 rounded-full bg-primary-600"></div>
+                                                <div class="absolute inset-y-1/2 right-0 w-2 h-2 rounded-full bg-primary-600"></div>
+                                            </div>
+                                            <p class="text-xs text-gray-500">Non-stop</p>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <p class="text-2xl font-bold" x-text="flight.arrivalTime"></p>
+                                            <p class="text-sm text-gray-600" x-text="flight.destination"></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Price and CTA -->
+                                    <div class="text-center md:text-right">
+                                        <p class="text-3xl font-bold text-primary-600" x-text="'$' + flight.price"></p>
+                                        <p class="text-sm text-gray-600 mb-4">per person</p>
+                                        <button class="btn-primary">
+                                            Select Flight
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Flight Features -->
+                                <div class="mt-6 pt-4 border-t">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="chip" x-text="flight.class"></span>
+                                        <span class="chip">Free Meals</span>
+                                        <span class="chip">WiFi Available</span>
+                                        <span class="chip">Entertainment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getSampleFlights() {
+            return [
+                {
+                    id: 1,
+                    airline: 'Emirates',
+                    airlineLogo: '/images/emirates-logo.png',
+                    flightNumber: 'EK201',
+                    origin: 'JFK',
+                    destination: 'LHR',
+                    departureTime: '10:30',
+                    arrivalTime: '22:45',
+                    duration: '7h 15m',
+                    price: 850,
+                    class: 'Economy'
+                },
+                // Add more sample flights
+            ];
+        }
+
+        function getSortedFlights() {
+            return this.flights.sort((a, b) => {
+                if (this.sortBy === 'price') return a.price - b.price;
+                if (this.sortBy === '-price') return b.price - a.price;
+                if (this.sortBy === 'duration') {
+                    return a.duration.localeCompare(b.duration);
+                }
+                return 0;
+            }).filter(flight => {
+                if (this.selectedClass !== 'all' && 
+                    flight.class.toLowerCase() !== this.selectedClass) {
+                    return false;
+                }
+                return flight.price <= this.priceRange;
+            });
+        }
+    </script>
+</body>
+</html>

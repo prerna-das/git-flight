@@ -1,0 +1,32 @@
+<!-- public/seats.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Seat Selection — Flight Booking</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/css/seat_style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Seat Selection</h1>
+      <a href="/Homepage.html" class="small">← Back to search</a>
+    </header>
+
+    <div id="bookingSummary" class="search-card section">Loading booking...</div>
+
+    <div class="search-card section">
+      <div>
+        <div class="small note">Click an available seat to select it, then confirm.</div>
+        <div id="seatMap" class="seat-map"></div>
+        <div style="margin-top:12px;">
+          <button id="confirmSeatBtn" class="btn" disabled>Confirm Seat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/seats.js"></script>
+</body>
+</html>

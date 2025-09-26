@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arriva or Flyvo - Flight Booking</title>
+    <link rel="stylesheet" href="Homepage.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="#">Arivo</a>
+            <!-- <a href="#">Arriva or Flyvo</a> -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="first">
+            <p>
+                Your Journey Begins Here
+                <br>
+                For Connecting You to the World
+            </p>
+            <div id="firstimage">
+                <img id=" " src="images/imagefolder/firstimage.png" class="responsive-img">
+            </div>
+        </div>
+        <section class="hero-section">
+
+            <div class="flight-search-container">
+                <h1>Find Your Next Adventure</h1>
+                <form id="flight-search-form">
+                    <div class="form-group">
+                        <label for="origin">From</label>
+                        <input type="text" id="origin" placeholder="Origin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">To</label>
+                        <input type="text" id="destination" placeholder="Destination" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departure-date">Departure</label>
+                        <input type="date" id="departure-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="return-date">Return</label>
+                        <input type="date" id="return-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passengers">Passengers</label>
+                        <select id="passengers" class="form-control">
+                            <option>1 Passenger</option>
+                            <option>2 Passengers</option>
+                            <option>3 Passengers</option>
+                            <option>4+ Passengers</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="class1">Class</label>
+                        <select id="class1" class="form-control">
+                            <option>Economy</option>
+                            <option>Premium Economy</option>
+                            <option>Business</option>
+                            <option>First Class</option>
+                        </select>
+                    </div>
+
+                    <button id="buttton_search" type="submit" class="search-btn">Search Flights</button>
+                </form>
+            </div>
+            <!-- <div class="design-area">
+                
+
+                <p>An inspiring image or video goes here.</p>
+            </div> -->
+        </section>
+
+        <section class="why-book-with-us">
+            <h2>Why Book With Us?</h2>
+            <!-- <p>✅ Lowest Prices | ✅ Easy Booking | ✅ 24/7 Support | ✅ Trusted by Millions</p> -->
+            <div class="scroll-wrapper">
+                <div class="card-container_whybook">
+                    <!-- Cards -->
+                    <div class="card_whybook">
+                        <div class="icon-circle blue">📅</div>
+                        <h3>Book & relax</h3>
+                        <p>With "Book and Relax," you can sit back, unwind, and enjoy the journey while we take care of
+                            everything else.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle orange">🛡️</div>
+                        <h3>Smart Checklist</h3>
+                        <p>Introducing Smart Checklist with us, the innovative solution revolutionizing the way you
+                            travel with our airline.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle peach">🔖</div>
+                        <h3>Save More</h3>
+                        <p>From discounted ticket prices to exclusive promotions and deals, we prioritize affordability
+                            without compromising on quality.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle teal">✈️</div>
+                        <h3>Best Flights</h3>
+                        <p>From quick breaks to epic adventures, find the best prices across millions of flights right
+                            here.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle purple">🏨</div>
+                        <h3>Best Hotels</h3>
+                        <p>We offer millions of rooms from all around the world, from low-cost to luxury.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle green">💰</div>
+                        <h3>Lowest Prices</h3>
+                        <p>Get unbeatable prices without compromising on quality and service.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle darkblue">🖱️</div>
+                        <h3>Easy Booking</h3>
+                        <p>Effortlessly book your travel in just a few clicks — simple and smooth.</p>
+                    </div>
+
+                    <div class="card_whybook">
+                        <div class="icon-circle red">📞</div>
+                        <h3>24/7 Support</h3>
+                        <p>Our dedicated team is here to help you anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="best-places">
+            <h2>Best Places to Travel This Month</h2>
+            <div class="scroll-wrapper2">
+                <div class="place-cards">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./images/imagefolder/maldives.png" alt="Floating Islands">
+                            <div class="price-tag">₹18.4k</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Enjoy the beauty of the Floating Islands</h3>
+                            <div class="location">📍 Lakshadweep Islands</div>
+                            <div class="stars">★ ★ ★ ★ ★ <span>(5.0)</span></div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/imagefolder/gerogialake.png" alt="Kayaking">
+                            <div class="price-tag">₹10k</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Enjoy the best kayak experience</h3>
+                            <div class="location">📍 Moraine Lake</div>
+                            <div class="stars">★ ★ ★ ★ ★ <span>(5.0)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/imagefolder/desertimage.png" alt="Desert Ride">
+                            <div class="price-tag">₹15.1k</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Discover dunes and waves in the desert</h3>
+                            <div class="location">📍 Sahara Desert</div>
+                            <div class="stars">★ ★ ★ ★ ★ <span>(5.0)</span></div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/imagefolder/londan.png" alt="londan">
+                            <div class="price-tag">₹45k</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Explore history and modern vibes in the city</h3>
+                            <div class="location">📍 London</div>
+                            <div class="stars">★ ★ ★ ★ ★ <span>(5.0)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- <footer class="social-media-footer">
+        <div class="social-links">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+        <div class="contact-info">
+            <p>Contact Info: info@arriva.com | +123-456-7890</p>
+        </div>
+    </footer> -->
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <p class="footer_about_mains">ARRIVA</p>
+                <p>Where Excellence Takes Flight. With a strong commitment to customer satisfaction and a passion for
+                    air travel, Flivan Airlines offers exceptional service and seamless journeys.</p>
+                <p>From friendly smiles to state-of-the-art aircraft, we connect the world, ensuring safe, comfortable,
+                    and unforgettable experiences.</p>
+            </div>
+
+            <div class="footer-info">
+                <p class="footer_about_main "> INFORMATION</p>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Offers</a></li>
+                    <li><a href="#">Seats</a></li>
+                    <li><a href="#">Destinations</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <p class="footer_about_main "> CONTACT</p>
+                <ul>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">Socials</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><img src="images/imagefolder/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="images/imagefolder/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="images/imagefolder/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="images/imagefolder/youtube (1).png" alt="YouTube"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Homepage.js"></script>
+</body>
+
+</html>

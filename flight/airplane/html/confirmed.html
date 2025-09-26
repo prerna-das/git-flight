@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Get the current URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const bookingId = params.get('bookingId');
+        
+        // Redirect to the new confirmation page with the same parameters
+        if (bookingId) {
+            window.location.href = `confirmation.html?bookingId=${encodeURIComponent(bookingId)}`;
+        } else {
+            window.location.href = 'confirmation.html';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to your booking confirmation...</p>
+    <p>If you are not redirected automatically, <a href="confirmation.html">click here</a>.</p>
+</body>
+</html>

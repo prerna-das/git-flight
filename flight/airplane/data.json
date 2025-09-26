@@ -1,0 +1,293 @@
+[
+  {
+    "flightNumber": "AI101",
+    "from": "Delhi",
+    "to": "Mumbai",
+    "price": 8500,
+    "date": "03/10/2025",
+    "stops": [],
+    "departure": "06:10",
+    "arrival": "08:15",
+    "duration": "2h05m"
+  },
+  {
+    "flightNumber": "6E407",
+    "from": "Delhi",
+    "to": "Mumbai",
+    "price": 8700,
+    "date": "03/10/2025",
+    "stops": [],
+    "departure": "12:30",
+    "arrival": "14:35",
+    "duration": "2h05m"
+  },
+  {
+    "flightNumber": "SG215",
+    "from": "Delhi",
+    "to": "Mumbai",
+    "price": 8200,
+    "date": "03/10/2025",
+    "stops": [
+      {
+        "city": "Jaipur",
+        "arrive": "09:15",
+        "depart": "09:45"
+      }
+    ],
+    "departure": "08:00",
+    "arrival": "11:50",
+    "duration": "3h50m"
+  },
+  {
+    "flightNumber": "6E305",
+    "from": "Mumbai",
+    "to": "Bangalore",
+    "price": 6300,
+    "date": "03/10/2025",
+    "stops": [],
+    "departure": "09:00",
+    "arrival": "10:45",
+    "duration": "1h45m"
+  },
+  {
+    "flightNumber": "UK520",
+    "from": "Mumbai",
+    "to": "Bangalore",
+    "price": 6800,
+    "date": "03/10/2025",
+    "stops": [
+      {
+        "city": "Hyderabad",
+        "arrive": "08:35",
+        "depart": "09:05"
+      }
+    ],
+    "departure": "07:30",
+    "arrival": "10:30",
+    "duration": "2h60m"
+  },
+  {
+    "flightNumber": "UK412",
+    "from": "Delhi",
+    "to": "Kolkata",
+    "price": 7200,
+    "date": "05/10/2025",
+    "stops": [],
+    "departure": "14:20",
+    "arrival": "16:10",
+    "duration": "1h50m"
+  },
+  {
+    "flightNumber": "AI330",
+    "from": "Delhi",
+    "to": "Kolkata",
+    "price": 7500,
+    "date": "05/10/2025",
+    "stops": [
+      {
+        "city": "Lucknow",
+        "arrive": "07:00",
+        "depart": "07:30"
+      }
+    ],
+    "departure": "06:00",
+    "arrival": "09:20",
+    "duration": "3h20m"
+  },
+  {
+    "flightNumber": "SG210",
+    "from": "Chennai",
+    "to": "Hyderabad",
+    "price": 5900,
+    "date": "07/10/2025",
+    "stops": [],
+    "departure": "07:30",
+    "arrival": "08:35",
+    "duration": "1h05m"
+  },
+  {
+    "flightNumber": "6E410",
+    "from": "Chennai",
+    "to": "Hyderabad",
+    "price": 6100,
+    "date": "07/10/2025",
+    "stops": [
+      {
+        "city": "Bangalore",
+        "arrive": "07:00",
+        "depart": "07:30"
+      }
+    ],
+    "departure": "06:00",
+    "arrival": "08:25",
+    "duration": "2h25m"
+  },
+  {
+    "flightNumber": "G812",
+    "from": "Bangalore",
+    "to": "Delhi",
+    "price": 8900,
+    "date": "10/10/2025",
+    "stops": [],
+    "departure": "21:40",
+    "arrival": "23:45",
+    "duration": "2h05m"
+  },
+  {
+    "flightNumber": "AI550",
+    "from": "Bangalore",
+    "to": "Delhi",
+    "price": 9300,
+    "date": "10/10/2025",
+    "stops": [
+      {
+        "city": "Mumbai",
+        "arrive": "06:10",
+        "depart": "06:40"
+      }
+    ],
+    "departure": "05:00",
+    "arrival": "08:50",
+    "duration": "3h50m"
+  },
+  {
+    "flightNumber": "EK512",
+    "from": "Mumbai",
+    "to": "Dubai",
+    "price": 28500,
+    "date": "11/10/2025",
+    "stops": [],
+    "departure": "02:40",
+    "arrival": "04:10",
+    "duration": "3h30m"
+  },
+  {
+    "flightNumber": "AI900",
+    "from": "Mumbai",
+    "to": "Dubai",
+    "price": 29500,
+    "date": "11/10/2025",
+    "stops": [
+      {
+        "city": "Delhi",
+        "arrive": "02:10",
+        "depart": "02:50"
+      }
+    ],
+    "departure": "01:00",
+    "arrival": "04:20",
+    "duration": "3h20m"
+  },
+  {
+    "flightNumber": "BA202",
+    "from": "Delhi",
+    "to": "London",
+    "price": 62000,
+    "date": "28/11/2025",
+    "stops": [],
+    "departure": "22:50",
+    "arrival": "06:10(+1)",
+    "duration": "8h20m"
+  },
+  {
+    "flightNumber": "AI701X",
+    "from": "Delhi",
+    "to": "London",
+    "price": 64000,
+    "date": "28/11/2025",
+    "stops": [
+      {
+        "city": "Mumbai",
+        "arrive": "22:05",
+        "depart": "22:50"
+      }
+    ],
+    "departure": "20:00",
+    "arrival": "06:10(+1)",
+    "duration": "10h10m"
+  },
+  {
+    "flightNumber": "SQ321",
+    "from": "Bangalore",
+    "to": "Singapore",
+    "price": 35500,
+    "date": "10/12/2025",
+    "stops": [],
+    "departure": "23:00",
+    "arrival": "05:40(+1)",
+    "duration": "5h40m"
+  },
+  {
+    "flightNumber": "6E800",
+    "from": "Bangalore",
+    "to": "Singapore",
+    "price": 36500,
+    "date": "10/12/2025",
+    "stops": [
+      {
+        "city": "Kuala Lumpur",
+        "arrive": "00:00(+1)",
+        "depart": "00:50"
+      }
+    ],
+    "departure": "21:00",
+    "arrival": "02:10(+1)",
+    "duration": "5h10m"
+  },
+  {
+    "flightNumber": "AI117X",
+    "from": "Delhi",
+    "to": "Bangkok",
+    "price": 27800,
+    "date": "15/12/2025",
+    "stops": [],
+    "departure": "08:15",
+    "arrival": "12:05",
+    "duration": "4h50m"
+  },
+  {
+    "flightNumber": "SG900",
+    "from": "Delhi",
+    "to": "Bangkok",
+    "price": 28500,
+    "date": "15/12/2025",
+    "stops": [
+      {
+        "city": "Kolkata",
+        "arrive": "08:00",
+        "depart": "08:40"
+      }
+    ],
+    "departure": "06:00",
+    "arrival": "12:30",
+    "duration": "6h30m"
+  },
+  {
+    "flightNumber": "UA900",
+    "from": "Mumbai",
+    "to": "New York",
+    "price": 85000,
+    "date": "20/12/2025",
+    "stops": [],
+    "departure": "02:50",
+    "arrival": "12:45(+1)",
+    "duration": "14h55m"
+  },
+  {
+    "flightNumber": "EK750",
+    "from": "Mumbai",
+    "to": "New York",
+    "price": 87000,
+    "date": "20/12/2025",
+    "stops": [
+      {
+        "city": "Dubai",
+        "arrive": "02:50",
+        "depart": "03:40"
+      }
+    ],
+    "departure": "00:30",
+    "arrival": "12:45(+1)",
+    "duration": "15h15m"
+  }
+]

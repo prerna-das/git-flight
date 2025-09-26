@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Seat - SkyWay</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50" x-data="{ 
+    loading: true,
+    selectedSeats: [],
+    currentClass: 'economy',
+    showSeatInfo: false,
+    selectedSeat: null,
+    totalPrice: 0
+}">
+    <!-- Loading Skeleton -->
+    <div x-show="loading" 
+         x-init="setTimeout(() => loading = false, 1000)"
+         class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="space-y-4 w-full max-w-3xl px-4">
+            <div class="h-8 skeleton rounded-lg w-1/4 mx-auto"></div>
+            <div class="h-64 skeleton rounded-lg"></div>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="h-20 skeleton rounded-lg"></div>
+                <div class="h-20 skeleton rounded-lg"></div>
+                <div class="h-20 skeleton rounded-lg"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div x-show="!loading" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100">
+
+        <!-- Flight Summary Bar -->
+        <div class="bg-white border-b shadow-sm sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="/images/emirates-logo.png" alt="Emirates" class="w-12 h-12 object-contain">
+                        <div>
+                            <h2 class="font-bold">Emirates EK201</h2>
+                            <div class="flex items-center text-sm text-gray-600 space-x-2">
+                                <span>JFK</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                                <span>LHR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-gray-600">Total Price</p>
+                        <p class="text-2xl font-bold text-primary-600" x-text="'$' + totalPrice"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <!-- Cabin Class Selector -->
+            <div class="flex justify-center mb-8 space-x-4">
+                <button 
+                    @click="currentClass = 'economy'" 
+                    :class="{'bg-primary-600 text-white': currentClass === 'economy'}"
+                    class="px-6 py-2 rounded-full font-medium transition-colors duration-200 hover:bg-primary-100">
+                    Economy
+                </button>
+                <button 
+                    @click="currentClass = 'business'" 
+                    :class="{'bg-primary-600 text-white': currentClass === 'business'}"
+                    class="px-6 py-2 rounded-full font-medium transition-colors duration-200 hover:bg-primary-100">
+                    Business
+                </button>
+                <button 
+                    @click="currentClass = 'first'" 
+                    :class="{'bg-primary-600 text-white': currentClass === 'first'}"
+                    class="px-6 py-2 rounded-full font-medium transition-colors duration-200 hover:bg-primary-100">
+                    First Class
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Seat Map -->
+                <div class="lg:col-span-2">
+                    <div class="card overflow-x-auto">
+                        <div class="flex justify-center mb-6">
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 rounded-lg bg-gray-200"></div>
+                                    <span class="text-sm">Available</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 rounded-lg bg-primary-600"></div>
+                                    <span class="text-sm">Selected</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 rounded-lg bg-gray-400"></div>
+                                    <span class="text-sm">Occupied</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Airplane Nose -->
+                        <div class="relative w-96 h-24 mx-auto mb-8">
+                            <div class="absolute inset-0 bg-gray-100 rounded-t-full"></div>
+                        </div>
+
+                        <!-- Seat Grid -->
+                        <div class="inline-block min-w-full">
+                            <div class="grid grid-cols-7 gap-2 w-max mx-auto px-8" id="seatMap">
+                                <!-- Seats will be generated dynamically -->
+                                <template x-for="row in 30" :key="row">
+                                    <template x-for="col in ['A','B','C','','D','E','F']" :key="col">
+                                        <div :class="{'invisible': col === ''}">
+                                            <button 
+                                                x-show="col !== ''"
+                                                @click="selectSeat(row + col)"
+                                                :class="{
+                                                    'bg-primary-600 text-white': selectedSeats.includes(row + col),
+                                                    'bg-gray-200 hover:bg-primary-100': !selectedSeats.includes(row + col)
+                                                }"
+                                                class="w-10 h-10 rounded-lg flex items-center justify-center font-medium transition-colors duration-200">
+                                                <span x-text="row + col"></span>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seat Selection Summary -->
+                <div class="lg:col-span-1">
+                    <div class="card sticky top-24">
+                        <h3 class="text-xl font-bold mb-6">Your Selection</h3>
+                        
+                        <div class="space-y-4">
+                            <template x-for="seat in selectedSeats" :key="seat">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium" x-text="'Seat ' + seat"></p>
+                                        <p class="text-sm text-gray-600" x-text="currentClass"></p>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <p class="font-medium" x-text="'$' + getSeatPrice(seat)"></p>
+                                        <button 
+                                            @click="removeSeat(seat)"
+                                            class="text-red-500 hover:text-red-600">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template x-if="selectedSeats.length === 0">
+                                <p class="text-gray-500 text-center py-4">No seats selected</p>
+                            </template>
+
+                            <hr class="my-4">
+
+                            <div class="flex justify-between font-bold">
+                                <span>Total</span>
+                                <span x-text="'$' + totalPrice"></span>
+                            </div>
+
+                            <button 
+                                @click="proceedToPassengers()"
+                                :disabled="selectedSeats.length === 0"
+                                :class="{'opacity-50 cursor-not-allowed': selectedSeats.length === 0}"
+                                class="btn-primary w-full">
+                                Continue to Passenger Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seat Information Modal -->
+        <div x-show="showSeatInfo" 
+             class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+             @click.self="showSeatInfo = false">
+            <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4" 
+                 @click.away="showSeatInfo = false">
+                <h3 class="text-xl font-bold mb-4" x-text="'Seat ' + selectedSeat"></h3>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium">Extra Legroom</p>
+                            <p class="text-sm text-gray-600">3 inches more than standard</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium">Power Outlet</p>
+                            <p class="text-sm text-gray-600">USB and AC power available</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium">Entertainment System</p>
+                            <p class="text-sm text-gray-600">Personal TV with free movies</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end space-x-4">
+                    <button 
+                        @click="showSeatInfo = false"
+                        class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                        Close
+                    </button>
+                    <button 
+                        @click="selectSeat(selectedSeat); showSeatInfo = false"
+                        class="btn-primary">
+                        Select Seat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectSeat(seat) {
+            if (this.selectedSeats.includes(seat)) {
+                this.removeSeat(seat);
+            } else {
+                this.selectedSeats.push(seat);
+                this.updateTotalPrice();
+                showSnackbar(`Seat ${seat} selected`);
+            }
+        }
+
+        function removeSeat(seat) {
+            this.selectedSeats = this.selectedSeats.filter(s => s !== seat);
+            this.updateTotalPrice();
+            showSnackbar(`Seat ${seat} removed`);
+        }
+
+        function getSeatPrice(seat) {
+            const prices = {
+                economy: 50,
+                business: 150,
+                first: 300
+            };
+            return prices[this.currentClass];
+        }
+
+        function updateTotalPrice() {
+            this.totalPrice = this.selectedSeats.reduce((total, seat) => {
+                return total + this.getSeatPrice(seat);
+            }, 0);
+        }
+
+        function proceedToPassengers() {
+            if (this.selectedSeats.length === 0) return;
+            window.location.href = '/passengers';
+        }
+    </script>
+</body>
+</html>

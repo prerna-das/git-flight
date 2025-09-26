@@ -1,0 +1,39 @@
+{
+  "name": "flight-helicopter-booking-app",
+  "version": "1.0.0",
+  "description": "A flight and helicopter booking application using Express, Node.js, and Firebase.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "build:css": "postcss public/css/main.css -o public/css/tailwind.css --watch",
+    "watch:css": "postcss public/css/main.css -o public/css/tailwind.css --watch"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^9.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.3",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^12.0.1",
+    "autoprefixer": "^10.4.16",
+    "@tailwindcss/forms": "^0.5.6",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/aspect-ratio": "^0.4.2"
+  },
+  "keywords": [
+    "booking",
+    "flight",
+    "helicopter",
+    "express",
+    "firebase"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
