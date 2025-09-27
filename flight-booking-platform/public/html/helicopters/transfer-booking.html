@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Helicopter Transfer - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation will be included from layout.html -->
+    <div id="nav-placeholder"></div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Book Airport Transfer</h1>
+
+                <!-- Booking Progress -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">1</div>
+                        <span class="ml-2 font-semibold">Transfer Details</span>
+                    </div>
+                    <div class="h-1 w-16 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">2</div>
+                        <span class="ml-2 text-gray-500">Passenger Info</span>
+                    </div>
+                    <div class="h-1 w-16 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">3</div>
+                        <span class="ml-2 text-gray-500">Payment</span>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <form class="booking-form space-y-6" id="transferBookingForm">
+                    <!-- Transfer Type -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Select Transfer Type</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <input type="radio" name="transferType" value="airport-to-city" id="airportToCity" class="mr-4" required>
+                                <label for="airportToCity" class="flex-1">Airport to City</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="transferType" value="city-to-airport" id="cityToAirport" class="mr-4">
+                                <label for="cityToAirport" class="flex-1">City to Airport</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flight Details -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Flight Details</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Flight Number</label>
+                                <input type="text" name="flightNumber" required placeholder="e.g., AA1234" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Flight Date</label>
+                                <input type="date" name="flightDate" required min="" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Flight Time</label>
+                                <input type="time" name="flightTime" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Terminal</label>
+                                <select name="terminal" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="">Select Terminal</option>
+                                    <option value="1">Terminal 1</option>
+                                    <option value="2">Terminal 2</option>
+                                    <option value="3">Terminal 3</option>
+                                    <option value="4">Terminal 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pickup/Dropoff Location -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">City Location</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                                <input type="text" name="address" required placeholder="Enter full address" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">City</label>
+                                    <input type="text" name="city" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Postal Code</label>
+                                    <input type="text" name="postalCode" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passengers and Luggage -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Passengers & Luggage</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Number of Passengers</label>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="passenger-decrease w-10 h-10 rounded-full border flex items-center justify-center">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" name="passengers" value="2" min="1" max="5" readonly 
+                                        class="w-20 text-center border-none text-xl font-semibold">
+                                    <button type="button" class="passenger-increase w-10 h-10 rounded-full border flex items-center justify-center">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Luggage Pieces</label>
+                                <div class="flex items-center space-x-4">
+                                    <button type="button" class="luggage-decrease w-10 h-10 rounded-full border flex items-center justify-center">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" name="luggage" value="2" min="0" max="8" readonly 
+                                        class="w-20 text-center border-none text-xl font-semibold">
+                                    <button type="button" class="luggage-increase w-10 h-10 rounded-full border flex items-center justify-center">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Additional Services</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <input type="checkbox" name="services" value="meet-greet" id="meetGreet" class="mr-4">
+                                <label for="meetGreet" class="flex-1">
+                                    <span class="font-semibold">Meet & Greet Service</span>
+                                    <span class="block text-gray-600">Personal assistance at the terminal</span>
+                                    <span class="text-primary">+$79</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" name="services" value="priority" id="priority" class="mr-4">
+                                <label for="priority" class="flex-1">
+                                    <span class="font-semibold">Priority Service</span>
+                                    <span class="block text-gray-600">Skip the regular queue</span>
+                                    <span class="text-primary">+$49</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Price Summary</h2>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Base Transfer Price</span>
+                                <span class="base-price">$499</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Additional Services</span>
+                                <span class="services-price">$0</span>
+                            </div>
+                            <div class="border-t pt-2 mt-2">
+                                <div class="flex justify-between font-bold">
+                                    <span>Total</span>
+                                    <span class="total-price">$499</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+
+                    <!-- Continue Button -->
+                    <div class="flex justify-end">
+                        <button type="submit" class="btn btn-primary">
+                            Continue to Passenger Information
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/helicopter-services.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        // Set minimum date to today
+        document.querySelector('input[name="flightDate"]').min = new Date().toISOString().split('T')[0];
+
+        // Handle passenger count
+        const setupCounter = (decreaseBtn, increaseBtn, input) => {
+            decreaseBtn.addEventListener('click', () => {
+                if (parseInt(input.value) > parseInt(input.min)) {
+                    input.value = parseInt(input.value) - 1;
+                    updatePrice();
+                }
+            });
+
+            increaseBtn.addEventListener('click', () => {
+                if (parseInt(input.value) < parseInt(input.max)) {
+                    input.value = parseInt(input.value) + 1;
+                    updatePrice();
+                }
+            });
+        };
+
+        setupCounter(
+            document.querySelector('.passenger-decrease'),
+            document.querySelector('.passenger-increase'),
+            document.querySelector('input[name="passengers"]')
+        );
+
+        setupCounter(
+            document.querySelector('.luggage-decrease'),
+            document.querySelector('.luggage-increase'),
+            document.querySelector('input[name="luggage"]')
+        );
+
+        // Update price when selections change
+        document.querySelectorAll('input[name="services"]').forEach(input => {
+            input.addEventListener('change', updatePrice);
+        });
+
+        function updatePrice() {
+            const basePrice = 499;
+            const services = Array.from(document.querySelectorAll('input[name="services"]:checked'));
+            
+            let servicesPrice = services.reduce((total, service) => {
+                return total + (service.value === 'meet-greet' ? 79 : 49);
+            }, 0);
+
+            document.querySelector('.base-price').textContent = `$${basePrice}`;
+            document.querySelector('.services-price').textContent = `$${servicesPrice}`;
+            document.querySelector('.total-price').textContent = `$${basePrice + servicesPrice}`;
+        }
+    </script>
+</body>
+</html>

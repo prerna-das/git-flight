@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation will be included from layout.html -->
+    <div id="nav-placeholder"></div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Payment</h1>
+
+                <!-- Booking Progress -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="ml-2 text-gray-500">Flight Details</span>
+                    </div>
+                    <div class="h-1 w-16 bg-primary"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="ml-2 text-gray-500">Passenger Info</span>
+                    </div>
+                    <div class="h-1 w-16 bg-primary"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">3</div>
+                        <span class="ml-2 font-semibold">Payment</span>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <form class="payment-form space-y-6" id="paymentForm">
+                    <!-- Order Summary -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between text-sm">
+                                <span>Service Type</span>
+                                <span id="serviceType" class="font-semibold">City Tour</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Date & Time</span>
+                                <span id="dateTime" class="font-semibold">Sep 28, 2025 10:00 AM</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Passengers</span>
+                                <span id="passengerCount" class="font-semibold">2</span>
+                            </div>
+                            <div class="border-t pt-4 flex justify-between">
+                                <span class="font-semibold">Total Amount</span>
+                                <span id="totalAmount" class="text-xl font-bold text-primary">$299</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Payment Method</h2>
+                        <div class="space-y-4">
+                            <!-- Credit Card -->
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="paymentMethod" value="card" id="card" checked class="mr-4">
+                                <label for="card" class="flex-1">
+                                    <span class="font-semibold">Credit/Debit Card</span>
+                                    <div class="flex space-x-2 mt-2">
+                                        <i class="fab fa-cc-visa text-2xl text-blue-700"></i>
+                                        <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
+                                        <i class="fab fa-cc-amex text-2xl text-blue-500"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <!-- PayPal -->
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="paymentMethod" value="paypal" id="paypal" class="mr-4">
+                                <label for="paypal" class="flex-1">
+                                    <span class="font-semibold">PayPal</span>
+                                    <i class="fab fa-paypal text-2xl text-blue-600 ml-2"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Details (shown/hidden based on payment method) -->
+                    <div id="cardDetails" class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Card Details</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Card Number *</label>
+                                <div class="relative">
+                                    <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456" 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary pl-10">
+                                    <i class="fas fa-credit-card absolute left-3 top-3 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Expiry Date *</label>
+                                    <input type="text" name="expiryDate" placeholder="MM/YY" 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">CVV *</label>
+                                    <div class="relative">
+                                        <input type="text" name="cvv" placeholder="123" 
+                                            class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                        <i class="fas fa-question-circle absolute right-3 top-3 text-gray-400 cursor-help"
+                                           title="3-digit security code on the back of your card"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Name on Card *</label>
+                                <input type="text" name="cardName" placeholder="John Smith" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Address -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Billing Address</h2>
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Street Address *</label>
+                                    <input type="text" name="street" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Apartment/Suite</label>
+                                    <input type="text" name="suite" 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                                    <input type="text" name="city" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">State/Province *</label>
+                                    <input type="text" name="state" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ZIP/Postal Code *</label>
+                                    <input type="text" name="zip" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Country *</label>
+                                <select name="country" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <!-- Add more countries as needed -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Payment -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <input type="checkbox" name="termsAccepted" required class="mt-1 mr-2">
+                                <label class="text-sm">
+                                    I agree to the <a href="#" class="text-primary hover:underline">Terms and Conditions</a> 
+                                    and authorize TravelAir to charge my payment method for the total amount shown
+                                </label>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" name="cancellationPolicy" required class="mt-1 mr-2">
+                                <label class="text-sm">
+                                    I understand the <a href="#" class="text-primary hover:underline">Cancellation Policy</a> 
+                                    and that some fees may be non-refundable
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Confirm Payment
+                            <i class="fas fa-lock ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/helicopter-services.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        // Load booking details from session storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingData = JSON.parse(sessionStorage.getItem('bookingData') || '{}');
+            
+            // Update order summary
+            document.getElementById('serviceType').textContent = bookingData.serviceType || 'City Tour';
+            document.getElementById('dateTime').textContent = bookingData.dateTime || 'Sep 28, 2025 10:00 AM';
+            document.getElementById('passengerCount').textContent = bookingData.passengers || '2';
+            document.getElementById('totalAmount').textContent = bookingData.total || '$299';
+        });
+
+        // Handle payment method selection
+        document.querySelectorAll('input[name="paymentMethod"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const cardDetails = document.getElementById('cardDetails');
+                cardDetails.style.display = this.value === 'card' ? 'block' : 'none';
+            });
+        });
+
+        // Card number formatting
+        document.querySelector('input[name="cardNumber"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 16) value = value.slice(0, 16);
+            value = value.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = value;
+        });
+
+        // Expiry date formatting
+        document.querySelector('input[name="expiryDate"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 4) value = value.slice(0, 4);
+            if (value.length > 2) value = value.slice(0, 2) + '/' + value.slice(2);
+            e.target.value = value;
+        });
+
+        // CVV formatting
+        document.querySelector('input[name="cvv"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 4) value = value.slice(0, 4);
+            e.target.value = value;
+        });
+
+        // Form validation and submission
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validatePaymentForm()) {
+                // Simulate payment processing
+                const loadingButton = document.querySelector('button[type="submit"]');
+                const originalContent = loadingButton.innerHTML;
+                loadingButton.disabled = true;
+                loadingButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+
+                setTimeout(() => {
+                    // Redirect to confirmation page
+                    window.location.href = 'confirmation.html';
+                }, 2000);
+            }
+        });
+
+        function validatePaymentForm() {
+            // Reset error messages
+            hideError();
+
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            if (paymentMethod === 'card') {
+                // Validate card number (16 digits)
+                const cardNumber = document.querySelector('input[name="cardNumber"]').value.replace(/\s/g, '');
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    showError('Please enter a valid 16-digit card number');
+                    return false;
+                }
+
+                // Validate expiry date (MM/YY format)
+                const expiry = document.querySelector('input[name="expiryDate"]').value;
+                if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+                    showError('Please enter a valid expiry date (MM/YY)');
+                    return false;
+                }
+
+                // Validate CVV (3-4 digits)
+                const cvv = document.querySelector('input[name="cvv"]').value;
+                if (!/^\d{3,4}$/.test(cvv)) {
+                    showError('Please enter a valid CVV');
+                    return false;
+                }
+
+                // Validate card name
+                const cardName = document.querySelector('input[name="cardName"]').value.trim();
+                if (cardName.length < 3) {
+                    showError('Please enter the name as it appears on your card');
+                    return false;
+                }
+            }
+
+            // Validate billing address
+            const requiredFields = ['street', 'city', 'state', 'zip', 'country'];
+            for (const field of requiredFields) {
+                const value = document.querySelector(`[name="${field}"]`).value.trim();
+                if (!value) {
+                    showError('Please complete all required billing address fields');
+                    return false;
+                }
+            }
+
+            // Validate terms acceptance
+            const terms = document.querySelector('input[name="termsAccepted"]').checked;
+            const cancellation = document.querySelector('input[name="cancellationPolicy"]').checked;
+            if (!terms || !cancellation) {
+                showError('Please accept the terms and conditions');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

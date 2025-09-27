@@ -1,0 +1,9 @@
+# Firebase, Node
+node_modules
+.firebaserc
+firebase.json
+*.log
+
+# Secret environment variables
+.env
+.env.local

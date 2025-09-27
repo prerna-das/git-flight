@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Jet Fleet - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <nav class="nav__container" style="background:#fff;box-shadow:0 2px 8px #0001;padding:1rem 2rem;display:flex;gap:2rem;align-items:center;">
+  <a href="/Homepage.html">Home</a>
+  <a href="/index.html">Main Platform</a>
+  <a href="/html/flights/search.html">Flights</a>
+  <a href="/html/private-jets/fleet.html">Private Jets</a>
+  <a href="/html/helicopters/charter.html">Helicopter Charter</a>
+  <a href="/admin">Admin Dashboard</a>
+</nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-[400px] bg-gray-900">
+            <div class="absolute inset-0">
+                <img src="/images/private-jets/fleet-hero.jpg" alt="Private Jet Fleet" class="w-full h-full object-cover opacity-50">
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex items-center">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl font-bold text-white mb-6">Our Private Jet Fleet</h1>
+                    <p class="text-xl text-gray-200">Experience ultimate luxury with our diverse fleet of private aircraft</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fleet Categories -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Light Jets -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="/images/private-jets/light-jet.jpg" alt="Light Jet" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-4">Light Jets</h3>
+                            <p class="text-gray-600 mb-4">Perfect for short trips with 4-6 passengers</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>4-6 Passengers</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Range: 2,000 miles</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Luggage: 55 cu. ft.</li>
+                            </ul>
+                            <button onclick="showJetDetails('light')" class="btn btn-primary w-full">View Jets</button>
+                        </div>
+                    </div>
+
+                    <!-- Mid-size Jets -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="/images/private-jets/midsize-jet.jpg" alt="Mid-size Jet" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-4">Mid-size Jets</h3>
+                            <p class="text-gray-600 mb-4">Ideal for medium-range flights with 8-10 passengers</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>8-10 Passengers</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Range: 3,000 miles</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Luggage: 85 cu. ft.</li>
+                            </ul>
+                            <button onclick="showJetDetails('midsize')" class="btn btn-primary w-full">View Jets</button>
+                        </div>
+                    </div>
+
+                    <!-- Heavy Jets -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="/images/private-jets/heavy-jet.jpg" alt="Heavy Jet" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-4">Heavy Jets</h3>
+                            <p class="text-gray-600 mb-4">Luxurious long-range travel for 10-16 passengers</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>10-16 Passengers</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Range: 6,000 miles</li>
+                                <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i>Luggage: 195 cu. ft.</li>
+                            </ul>
+                            <button onclick="showJetDetails('heavy')" class="btn btn-primary w-full">View Jets</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Fleet List -->
+        <section id="fleetDetails" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <!-- Light Jets -->
+                <div id="lightJets" class="mb-16">
+                    <h2 class="text-3xl font-bold mb-8">Light Jets</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Citation CJ3+ -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                            <div class="relative">
+                                <img src="/images/private-jets/citation-cj3.jpg" alt="Citation CJ3+" class="w-full h-56 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full">
+                                    From $4,500/hr
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Citation CJ3+</h3>
+                                <p class="text-gray-600 mb-4">Modern light jet with exceptional comfort</p>
+                                <div class="space-y-2 mb-6">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Passengers</span>
+                                        <span class="font-semibold">6</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Range</span>
+                                        <span class="font-semibold">2,040 nm</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Speed</span>
+                                        <span class="font-semibold">480 mph</span>
+                                    </div>
+                                </div>
+                                <button onclick="bookJet('citation-cj3')" class="btn btn-primary w-full">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Similar cards for other jets... -->
+                    </div>
+                </div>
+
+                <!-- Mid-size Jets -->
+                <div id="midsizeJets" class="mb-16">
+                    <!-- Similar structure as light jets -->
+                </div>
+
+                <!-- Heavy Jets -->
+                <div id="heavyJets">
+                    <!-- Similar structure as light jets -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Process -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">How to Book</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-search text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Select Aircraft</h3>
+                        <p class="text-gray-600">Choose from our fleet of private jets</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-calendar-alt text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Pick Dates</h3>
+                        <p class="text-gray-600">Select your travel dates</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-check text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Customize</h3>
+                        <p class="text-gray-600">Add your preferences</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check-circle text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Confirm</h3>
+                        <p class="text-gray-600">Secure your booking</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/fleet.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                // Insert navigation
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                // Insert footer
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        function showJetDetails(category) {
+            const section = document.getElementById(`${category}Jets`);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function bookJet(jetId) {
+            window.location.href = `/html/private-jets/booking.html?jet=${jetId}`;
+        }
+    </script>
+</body>
+</html>

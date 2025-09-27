@@ -1,0 +1,151 @@
+/* Main Theme Colors */
+:root {
+    --primary: #3B82F6;   /* Blue */
+    --primary-dark: #2563EB;
+    --primary-light: #60A5FA;
+    --secondary: #4B5563;  /* Gray */
+    --accent: #EC4899;    /* Pink */
+    --success: #10B981;   /* Green */
+    --warning: #F59E0B;   /* Amber */
+    --danger: #EF4444;    /* Red */
+    --background: #F3F4F6;
+    --text: #1F2937;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Modern Button Styles */
+.btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center justify-center;
+}
+
+.btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+.btn-secondary {
+    @apply bg-white text-secondary border border-gray-300 hover:bg-gray-50;
+}
+
+.btn-accent {
+    @apply bg-accent text-white hover:bg-pink-600;
+}
+
+/* Card Styles */
+.card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-102;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    @apply w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200;
+}
+
+/* Radio and Checkbox Styles */
+input[type="radio"],
+input[type="checkbox"] {
+    @apply text-primary focus:ring-primary;
+}
+
+/* Navigation Styles */
+.nav-link {
+    @apply text-gray-700 hover:text-primary transition-colors duration-200;
+}
+
+.nav-link.active {
+    @apply text-primary font-semibold;
+}
+
+/* Hero Section Styles */
+.hero {
+    @apply relative bg-gray-900 text-white;
+}
+
+.hero-overlay {
+    @apply absolute inset-0 bg-black opacity-50;
+}
+
+/* Service Card Styles */
+.service-card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Price Display */
+.price {
+    @apply text-2xl font-bold text-primary;
+}
+
+.price-small {
+    @apply text-lg font-semibold text-primary;
+}
+
+/* Alert Styles */
+.alert {
+    @apply p-4 rounded-lg mb-4;
+}
+
+.alert-success {
+    @apply bg-green-100 text-green-700 border border-green-400;
+}
+
+.alert-error {
+    @apply bg-red-100 text-red-700 border border-red-400;
+}
+
+.alert-warning {
+    @apply bg-yellow-100 text-yellow-700 border border-yellow-400;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Loading Spinner */
+.spinner {
+    @apply animate-spin inline-block w-6 h-6 border-4 border-primary border-t-transparent rounded-full;
+}
+
+/* Tailwind Utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

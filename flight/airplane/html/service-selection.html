@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Travel Service - Premium Air Travel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Homepage.css">
+    <style>
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .feature-list li {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            list-style: none;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.2rem;
+        }
+
+        .booking-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .booking-btn:hover {
+            background: var(--primary-color-dark);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1 class="nav__logo">TravelAir</h1>
+        <ul class="nav__links">
+            <li class="link"><a href="Homepage.html">Home</a></li>
+            <li class="link"><a href="service-selection.html">Services</a></li>
+            <li class="link"><a href="#">About</a></li>
+            <li class="link"><a href="#">Contact</a></li>
+        </ul>
+        <button class="btn">Book Now</button>
+    </nav>
+
+    <section class="section__container">
+        <h2 class="section__header">Select Your Premium Travel Experience</h2>
+        <div class="service-cards">
+            <!-- Commercial Flights -->
+            <div class="service-card">
+                <img src="../images/imagefolder/airplane.png" alt="Commercial Flight" class="service-icon">
+                <h3 class="service-title">Commercial Flights</h3>
+                <p class="service-description">Experience comfortable travel with our premium commercial flight service.</p>
+                <div class="service-price">From $199</div>
+                <ul class="feature-list">
+                    <li>Premium Economy & Business Class</li>
+                    <li>In-flight Entertainment</li>
+                    <li>Complimentary Meals</li>
+                    <li>Priority Boarding</li>
+                </ul>
+                <a href="index.html" class="booking-btn">Book Flight</a>
+            </div>
+
+            <!-- Private Jets -->
+            <div class="service-card">
+                <img src="../images/imagefolder/firstimage.png" alt="Private Jet" class="service-icon">
+                <h3 class="service-title">Private Jets</h3>
+                <p class="service-description">Ultimate luxury and privacy with our exclusive private jet service.</p>
+                <div class="service-price">From $5,999</div>
+                <ul class="feature-list">
+                    <li>Customizable Schedule</li>
+                    <li>Luxury Interior</li>
+                    <li>Personal Cabin Crew</li>
+                    <li>Gourmet Dining</li>
+                </ul>
+                <a href="private-jet.html" class="booking-btn">Charter Now</a>
+            </div>
+
+            <!-- Helicopter Services -->
+            <div class="service-card">
+                <img src="../images/imagefolder/flight.png" alt="Helicopter" class="service-icon">
+                <h3 class="service-title">Helicopter Services</h3>
+                <p class="service-description">Quick and exclusive helicopter transfers and tours.</p>
+                <div class="service-price">From $999</div>
+                <ul class="feature-list">
+                    <li>City Tours</li>
+                    <li>Airport Transfers</li>
+                    <li>Scenic Flights</li>
+                    <li>Corporate Services</li>
+                </ul>
+                <a href="helicopter.html" class="booking-btn">Book Helicopter</a>
+            </div>
+
+            <!-- Luxury Charter -->
+            <div class="service-card">
+                <img src="../images/imagefolder/travel.png" alt="Luxury Charter" class="service-icon">
+                <h3 class="service-title">Luxury Charter</h3>
+                <p class="service-description">Custom group travel solutions for special occasions.</p>
+                <div class="service-price">From $7,999</div>
+                <ul class="feature-list">
+                    <li>Group Bookings</li>
+                    <li>Custom Itineraries</li>
+                    <li>Luxury Amenities</li>
+                    <li>Dedicated Concierge</li>
+                </ul>
+                <a href="luxury-charter.html" class="booking-btn">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3>TravelAir</h3>
+                <p>Where luxury meets the skies.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Support</h4>
+                <p>FAQs</p>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>Contact Us</p>
+            </div>
+            <div class="footer__col">
+                <h4>Social Media</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

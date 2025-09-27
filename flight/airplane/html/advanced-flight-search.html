@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Advanced Flight Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Find Your Next Flight</h1>
+        <div class="space-y-4">
+            <input type="text" id="departInput" placeholder="Departure IATA (e.g., JAI)" class="w-full p-2 border rounded">
+            <input type="text" id="arrivalInput" placeholder="Arrival IATA (e.g., LHR)" class="w-full p-2 border rounded">
+            <button id="searchButton" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Search Flights</button>
+        </div>
+        <div id="results" class="mt-6"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-functions-compat.js"></script>
+    <script>
+        // --- IMPORTANT: ADD YOUR FIREBASE CONFIGURATION HERE ---
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // --- END OF FIREBASE CONFIGURATION ---
+
+        firebase.initializeApp(firebaseConfig);
+        const functions = firebase.functions();
+        const travelApiGateway = functions.httpsCallable('travelApiGateway');
+
+        document.getElementById('searchButton').addEventListener('click', async () => {
+            const departId = document.getElementById('departInput').value.trim().toUpperCase();
+            const arrivalId = document.getElementById('arrivalInput').value.trim().toUpperCase();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "<p>Searching for flight prices...</p>";
+
+            if (!departId || !arrivalId) {
+                resultsDiv.innerHTML = "<p class='text-red-500'>Please provide both departure and arrival codes.</p>";
+                return;
+            }
+
+            try {
+                // Call the gateway with the desired 'action' and 'params'
+                const response = await travelApiGateway({
+                    action: 'getFlightPrices',
+                    params: { departId, arrivalId }
+                });
+
+                // NOTE: The structure of 'response.data' is determined by the external API.
+                // It is essential to consult the RapidAPI documentation for the exact response schema.
+                const priceData = response.data.data; // Adjust based on actual API response
+                if (priceData && priceData.price) {
+                    resultsDiv.innerHTML = `<h2>Cheapest Flight Found</h2>
+                                            <p>Price: ${priceData.price} ${priceData.currency}</p>`;
+                } else {
+                    resultsDiv.innerHTML = "<p>Could not retrieve price data. Please check the API response.</p>";
+                    console.log('API Response:', response.data);
+                }
+            } catch (error) {
+                console.error("Frontend Error:", error);
+                resultsDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

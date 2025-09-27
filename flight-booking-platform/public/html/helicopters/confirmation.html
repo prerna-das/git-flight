@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation will be included from layout.html -->
+    <div id="nav-placeholder"></div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <!-- Success Message -->
+                <div class="text-center mb-12">
+                    <div class="inline-block w-20 h-20 bg-green-100 rounded-full mb-6">
+                        <i class="fas fa-check text-4xl text-green-500 leading-[5rem]"></i>
+                    </div>
+                    <h1 class="text-3xl font-bold mb-4">Booking Confirmed!</h1>
+                    <p class="text-gray-600">Thank you for choosing TravelAir. Your booking has been confirmed.</p>
+                </div>
+
+                <!-- Booking Details -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Booking Details</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Booking Reference</span>
+                            <span class="font-semibold" id="bookingReference">HA123456</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Service Type</span>
+                            <span class="font-semibold" id="serviceType">City Tour</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Date & Time</span>
+                            <span class="font-semibold" id="dateTime">Sep 28, 2025 10:00 AM</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <span class="text-gray-600">Duration</span>
+                            <span class="font-semibold" id="duration">30 minutes</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Amount Paid</span>
+                            <span class="text-xl font-bold text-primary" id="totalAmount">$299</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Passenger -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Lead Passenger</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <span class="text-gray-600">Name</span>
+                            <p class="font-semibold" id="passengerName">John Smith</p>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Email</span>
+                            <p class="font-semibold" id="passengerEmail">john.smith@example.com</p>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Phone</span>
+                            <p class="font-semibold" id="passengerPhone">+1 234 567 8900</p>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Passengers</span>
+                            <p class="font-semibold" id="passengerCount">2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Information -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Important Information</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-blue-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">Arrival Time</h3>
+                                <p class="text-gray-600">Please arrive 30 minutes before your scheduled flight time for the safety briefing.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-id-card text-yellow-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">What to Bring</h3>
+                                <p class="text-gray-600">All passengers must bring valid photo ID and your booking reference number.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-green-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">Location</h3>
+                                <p class="text-gray-600">TravelAir Heliport, 123 Airport Road. Follow signs for helicopter services.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-red-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">Weather Policy</h3>
+                                <p class="text-gray-600">Flights are subject to weather conditions. We will contact you if any changes are necessary.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button onclick="window.print()" class="btn btn-secondary">
+                        <i class="fas fa-print mr-2"></i>
+                        Print Confirmation
+                    </button>
+                    <button onclick="downloadPDF()" class="btn btn-secondary">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </button>
+                    <a href="/html/helicopters/tours.html" class="btn btn-primary">
+                        <i class="fas fa-home mr-2"></i>
+                        Back to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/helicopter-services.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        // Load booking details from session storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingData = JSON.parse(sessionStorage.getItem('bookingData') || '{}');
+            const passengerData = JSON.parse(sessionStorage.getItem('passengerData') || '{}');
+
+            // Generate random booking reference
+            const bookingRef = 'HA' + Math.random().toString().slice(2, 8);
+            document.getElementById('bookingReference').textContent = bookingRef;
+
+            // Update booking details
+            document.getElementById('serviceType').textContent = bookingData.serviceType || 'City Tour';
+            document.getElementById('dateTime').textContent = bookingData.dateTime || 'Sep 28, 2025 10:00 AM';
+            document.getElementById('duration').textContent = bookingData.duration || '30 minutes';
+            document.getElementById('totalAmount').textContent = bookingData.total || '$299';
+
+            // Update passenger details
+            document.getElementById('passengerName').textContent = 
+                `${passengerData.leadFirstName || 'John'} ${passengerData.leadLastName || 'Smith'}`;
+            document.getElementById('passengerEmail').textContent = passengerData.leadEmail || 'john.smith@example.com';
+            document.getElementById('passengerPhone').textContent = passengerData.leadPhone || '+1 234 567 8900';
+            document.getElementById('passengerCount').textContent = bookingData.passengers || '2';
+
+            // Clear session storage
+            sessionStorage.removeItem('bookingData');
+            sessionStorage.removeItem('passengerData');
+        });
+
+        // Download PDF function (placeholder)
+        function downloadPDF() {
+            alert('PDF download functionality will be implemented here');
+        }
+
+        // Print-specific styles
+        if (window.matchMedia) {
+            const mediaQueryList = window.matchMedia('print');
+            mediaQueryList.addListener(function(mql) {
+                if (mql.matches) {
+                    // Hide navigation and footer when printing
+                    document.getElementById('nav-placeholder').style.display = 'none';
+                    document.getElementById('footer-placeholder').style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

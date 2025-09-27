@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Special Event Flight - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation will be included from layout.html -->
+    <div id="nav-placeholder"></div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Book Special Event Flight</h1>
+
+                <!-- Booking Progress -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">1</div>
+                        <span class="ml-2 font-semibold">Event Details</span>
+                    </div>
+                    <div class="h-1 w-16 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">2</div>
+                        <span class="ml-2 text-gray-500">Passenger Info</span>
+                    </div>
+                    <div class="h-1 w-16 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">3</div>
+                        <span class="ml-2 text-gray-500">Payment</span>
+                    </div>
+                </div>
+
+                <!-- Event Booking Form -->
+                <form class="event-form space-y-6" id="eventBookingForm">
+                    <!-- Event Type -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Event Type</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="eventType" value="wedding" id="wedding" class="mr-4" required>
+                                <label for="wedding" class="flex-1">
+                                    <span class="font-semibold">Wedding</span>
+                                    <span class="block text-gray-600">Aerial photography & grand entrance</span>
+                                    <span class="text-primary">From $1,499</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="eventType" value="proposal" id="proposal" class="mr-4">
+                                <label for="proposal" class="flex-1">
+                                    <span class="font-semibold">Marriage Proposal</span>
+                                    <span class="block text-gray-600">Romantic city flight & special moments</span>
+                                    <span class="text-primary">From $999</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="eventType" value="celebration" id="celebration" class="mr-4">
+                                <label for="celebration" class="flex-1">
+                                    <span class="font-semibold">Special Celebration</span>
+                                    <span class="block text-gray-600">Birthday, anniversary, or special occasion</span>
+                                    <span class="text-primary">From $799</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="eventType" value="photo" id="photo" class="mr-4">
+                                <label for="photo" class="flex-1">
+                                    <span class="font-semibold">Photography/Filming</span>
+                                    <span class="block text-gray-600">Professional aerial photography session</span>
+                                    <span class="text-primary">From $899</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Event Details</h2>
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
+                                    <input type="date" name="eventDate" required min="" 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Time</label>
+                                    <input type="time" name="eventTime" required 
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Event Location</label>
+                                <input type="text" name="eventLocation" required placeholder="Enter event location or area" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Event Duration</label>
+                                <select name="duration" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="">Select duration</option>
+                                    <option value="30">30 Minutes</option>
+                                    <option value="60">1 Hour</option>
+                                    <option value="90">1.5 Hours</option>
+                                    <option value="120">2 Hours</option>
+                                    <option value="custom">Custom Duration</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passengers -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Number of Passengers</h2>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" class="passenger-decrease w-10 h-10 rounded-full border flex items-center justify-center">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" name="passengers" value="2" min="1" max="5" readonly 
+                                class="w-20 text-center border-none text-xl font-semibold">
+                            <button type="button" class="passenger-increase w-10 h-10 rounded-full border flex items-center justify-center">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <span class="text-gray-600 ml-4">(Max 5 passengers)</span>
+                        </div>
+                    </div>
+
+                    <!-- Event Packages -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Event Packages</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="package" value="basic" id="basicPackage" class="mr-4" required>
+                                <label for="basicPackage" class="flex-1">
+                                    <span class="font-semibold">Basic Package</span>
+                                    <ul class="text-gray-600 mt-2 space-y-1">
+                                        <li>• Helicopter flight</li>
+                                        <li>• Basic photography</li>
+                                        <li>• Standard route</li>
+                                    </ul>
+                                </label>
+                            </div>
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="package" value="premium" id="premiumPackage" class="mr-4">
+                                <label for="premiumPackage" class="flex-1">
+                                    <span class="font-semibold">Premium Package</span>
+                                    <ul class="text-gray-600 mt-2 space-y-1">
+                                        <li>• Extended flight time</li>
+                                        <li>• Professional photography</li>
+                                        <li>• Champagne service</li>
+                                        <li>• Custom route</li>
+                                    </ul>
+                                    <span class="text-primary mt-2 block">+$300</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center p-4 border rounded-lg">
+                                <input type="radio" name="package" value="luxury" id="luxuryPackage" class="mr-4">
+                                <label for="luxuryPackage" class="flex-1">
+                                    <span class="font-semibold">Luxury Package</span>
+                                    <ul class="text-gray-600 mt-2 space-y-1">
+                                        <li>• VIP experience</li>
+                                        <li>• Professional photo & video</li>
+                                        <li>• Gourmet catering</li>
+                                        <li>• Luxury ground transport</li>
+                                        <li>• Personalized route</li>
+                                    </ul>
+                                    <span class="text-primary mt-2 block">+$600</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Additional Services</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <input type="checkbox" name="services" value="decoration" id="decoration" class="mr-4">
+                                <label for="decoration" class="flex-1">
+                                    <span class="font-semibold">Helicopter Decoration</span>
+                                    <span class="block text-gray-600">Custom decoration for your event</span>
+                                    <span class="text-primary">+$199</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" name="services" value="video" id="video" class="mr-4">
+                                <label for="video" class="flex-1">
+                                    <span class="font-semibold">Professional Videography</span>
+                                    <span class="block text-gray-600">4K video coverage of your event</span>
+                                    <span class="text-primary">+$299</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" name="services" value="limo" id="limo" class="mr-4">
+                                <label for="limo" class="flex-1">
+                                    <span class="font-semibold">Limousine Service</span>
+                                    <span class="block text-gray-600">Luxury ground transportation</span>
+                                    <span class="text-primary">+$249</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Requirements -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Special Requirements</h2>
+                        <textarea name="specialRequirements" rows="4" 
+                            placeholder="Please specify any special requirements, arrangements, or requests for your event" 
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary"></textarea>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Price Summary</h2>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Base Price</span>
+                                <span class="base-price">$799</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Package Upgrade</span>
+                                <span class="package-price">$0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Additional Services</span>
+                                <span class="services-price">$0</span>
+                            </div>
+                            <div class="border-t pt-2 mt-2">
+                                <div class="flex justify-between font-bold">
+                                    <span>Total</span>
+                                    <span class="total-price">$799</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-end">
+                        <button type="submit" class="btn btn-primary">
+                            Continue to Passenger Information
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/helicopter-services.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        // Set minimum date to today
+        document.querySelector('input[name="eventDate"]').min = new Date().toISOString().split('T')[0];
+
+        // Handle passenger counter
+        setupCounter(
+            document.querySelector('.passenger-decrease'),
+            document.querySelector('.passenger-increase'),
+            document.querySelector('input[name="passengers"]')
+        );
+
+        // Update price when selections change
+        document.querySelectorAll('input[name="eventType"], input[name="package"], input[name="services"]')
+            .forEach(input => {
+                input.addEventListener('change', updatePrice);
+            });
+
+        function updatePrice() {
+            const eventType = document.querySelector('input[name="eventType"]:checked');
+            const package = document.querySelector('input[name="package"]:checked');
+            const services = Array.from(document.querySelectorAll('input[name="services"]:checked'));
+            
+            let basePrice = getEventBasePrice(eventType ? eventType.value : null);
+            let packagePrice = getPackagePrice(package ? package.value : null);
+            let servicesPrice = services.reduce((total, service) => {
+                return total + getServicePrice(service.value);
+            }, 0);
+
+            document.querySelector('.base-price').textContent = `$${basePrice}`;
+            document.querySelector('.package-price').textContent = `$${packagePrice}`;
+            document.querySelector('.services-price').textContent = `$${servicesPrice}`;
+            document.querySelector('.total-price').textContent = `$${basePrice + packagePrice + servicesPrice}`;
+        }
+
+        function getEventBasePrice(type) {
+            const prices = {
+                'wedding': 1499,
+                'proposal': 999,
+                'celebration': 799,
+                'photo': 899
+            };
+            return prices[type] || 799;
+        }
+
+        function getPackagePrice(package) {
+            const prices = {
+                'basic': 0,
+                'premium': 300,
+                'luxury': 600
+            };
+            return prices[package] || 0;
+        }
+
+        function getServicePrice(service) {
+            const prices = {
+                'decoration': 199,
+                'video': 299,
+                'limo': 249
+            };
+            return prices[service] || 0;
+        }
+
+        // Handle duration selection
+        document.querySelector('select[name="duration"]').addEventListener('change', function() {
+            if (this.value === 'custom') {
+                const customDuration = prompt('Please enter desired duration in minutes:');
+                if (customDuration) {
+                    const option = document.createElement('option');
+                    option.value = customDuration;
+                    option.text = `${customDuration} Minutes`;
+                    option.selected = true;
+                    this.add(option);
+                } else {
+                    this.value = '60'; // Default to 1 hour if custom input is cancelled
+                }
+            }
+        });
+    </script>
+</body>
+</html>

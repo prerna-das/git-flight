@@ -8,6 +8,7 @@
   --extra-light: #f1f5f9;
   --white: #ffffff;
   --max-width: 1200px;
+  --transition: all 0.3s ease-in-out;
 }
 
 * {
@@ -16,10 +17,18 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
 .section__container {
   max-width: var(--max-width);
   margin: auto;
   padding: 5rem 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 .section__header {
@@ -27,6 +36,7 @@
   font-weight: 600;
   line-height: 3rem;
   color: var(--text-dark);
+  animation: slideInUp 0.5s ease-in-out;
 }
 
 .btn {
@@ -624,4 +634,148 @@ nav {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* Modern Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern Hover Effects */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color-dark);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover:after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.memories__card {
+  transition: all 0.3s ease;
+}
+
+.memories__card:hover {
+  transform: translateY(-10px);
+}
+
+.travellers__card {
+  transition: all 0.3s ease;
+}
+
+.travellers__card:hover {
+  transform: scale(1.05);
+}
+
+.nav__links .link a {
+  position: relative;
+}
+
+.nav__links .link a:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav__links .link a:hover:after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Loading Animation for Images */
+img {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading Skeleton Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Modern Card Hover Effects */
+.plan__content {
+  transition: all 0.3s ease;
+}
+
+.plan__content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Floating Animation for Hero Images */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.header__container img {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Modern Form Input Effects */
+.booking__container input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(61, 92, 184, 0.1);
 }

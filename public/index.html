@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelAir - Modern Flight Booking Platform</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center space-x-2">
+                    <i class="fas fa-plane-departure text-primary text-2xl"></i>
+                    <span class="text-xl font-bold text-gray-800">TravelAir</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="/Homepage.html" class="nav-link">Home</a>
+                    <a href="#flights" class="nav-link">Flights</a>
+                    <a href="/html/private-jets/fleet.html" class="nav-link">Private Jets</a>
+                    <a href="/html/helicopters/charter.html" class="nav-link">Helicopter Charter</a>
+                    <a href="/admin" class="nav-link">Admin Dashboard</a>
+                    <a href="/index.html" class="nav-link">Main Platform</a>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <button id="searchBtn" class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="relative" id="userMenu">
+                        <button class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-user-circle text-xl"></i>
+                            <span class="hidden md:inline">Account</span>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2">
+                            <a href="/login" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Login</a>
+                            <a href="/register" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Register</a>
+                            <a href="/bookings" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Bookings</a>
+                            <a href="/profile" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600 hover:text-gray-900" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="hidden md:hidden" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#flights" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Flights</a>
+                <a href="#private-jets" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Private Jets</a>
+                <a href="#helicopters" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Helicopters</a>
+                <a href="#luxury" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Luxury Charter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative h-[600px] bg-gradient-to-r from-primary to-primary-dark text-white">
+            <div class="absolute inset-0">
+                <video class="w-full h-full object-cover opacity-30" autoplay loop muted>
+                    <source src="/videos/hero-background.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex items-center">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl font-bold mb-6 animate-fadeIn">Experience Luxury in the Skies</h1>
+                    <p class="text-xl mb-8 animate-fadeIn delay-100">Choose from our premium selection of flights, private jets, and helicopter services.</p>
+                    <div class="space-x-4 animate-fadeIn delay-200">
+                        <a href="#booking" class="btn btn-secondary">Book Now</a>
+                        <a href="#services" class="btn border-2 border-white hover:bg-white hover:text-primary">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Search Section -->
+        <section id="booking" class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 -mt-32 relative z-10">
+                    <div class="flex space-x-4 mb-6">
+                        <button class="btn-tab active" data-tab="flights">
+                            <i class="fas fa-plane-departure mr-2"></i>Flights
+                        </button>
+                        <button class="btn-tab" data-tab="private-jets">
+                            <i class="fas fa-jet-fighter mr-2"></i>Private Jets
+                        </button>
+                        <button class="btn-tab" data-tab="helicopters">
+                            <i class="fas fa-helicopter mr-2"></i>Helicopters
+                        </button>
+                    </div>
+
+                    <!-- Flight Search Form -->
+                    <form id="flightSearchForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label for="departure" class="form-label">From</label>
+                                <input type="text" id="departure" class="input-field" placeholder="City or Airport">
+                            </div>
+                            <div class="form-group">
+                                <label for="arrival" class="form-label">To</label>
+                                <input type="text" id="arrival" class="input-field" placeholder="City or Airport">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="form-group">
+                                <label for="departDate" class="form-label">Departure Date</label>
+                                <input type="date" id="departDate" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="returnDate" class="form-label">Return Date</label>
+                                <input type="date" id="returnDate" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="passengers" class="form-label">Passengers</label>
+                                <select id="passengers" class="input-field">
+                                    <option value="1">1 Passenger</option>
+                                    <option value="2">2 Passengers</option>
+                                    <option value="3">3 Passengers</option>
+                                    <option value="4">4 Passengers</option>
+                                    <option value="5">5+ Passengers</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Search Flights</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Services -->
+        <section id="services" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Our Premium Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Commercial Flights -->
+                    <div class="interactive-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Commercial Flights</h3>
+                        <p class="text-gray-600 text-center mb-4">Experience comfort and luxury in our premium cabin classes.</p>
+                        <a href="#flights" class="text-primary hover:text-primary-dark flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Private Jets -->
+                    <div class="interactive-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-jet-fighter"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Private Jets</h3>
+                        <p class="text-gray-600 text-center mb-4">Ultimate luxury and privacy with our exclusive jet service.</p>
+                        <a href="#private-jets" class="text-primary hover:text-primary-dark flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Helicopter Services -->
+                    <div class="interactive-card">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-helicopter"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Helicopter Services</h3>
+                        <p class="text-gray-600 text-center mb-4">Quick and exclusive transfers for the ultimate convenience.</p>
+                        <a href="#helicopters" class="text-primary hover:text-primary-dark flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Destinations -->
+        <section id="destinations" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Popular Destinations</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Destination Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offers -->
+        <section id="offers" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Special Offers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Offer Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-primary text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+                <p class="mb-8">Subscribe to our newsletter for exclusive offers and updates.</p>
+                <form class="max-w-md mx-auto flex">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-lg focus:outline-none">
+                    <button type="submit" class="bg-secondary hover:bg-secondary-dark px-6 py-2 rounded-r-lg transition-colors">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TravelAir</h3>
+                    <p class="text-gray-400">Experience luxury in the skies</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#destinations" class="text-gray-400 hover:text-white">Destinations</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#terms" class="text-gray-400 hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="#privacy" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 TravelAir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/booking.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

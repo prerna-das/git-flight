@@ -1,0 +1,34 @@
+mutation CreateBooking($userId: UUID!, $bookingDate: Timestamp!, $bookingReference: String!, $currency: String, $totalPrice: Float!) @auth(level: USER) {
+  booking_insert(data: {
+    userId: $userId,
+    bookingDate: $bookingDate,
+    bookingReference: $bookingReference,
+    currency: $currency,
+    totalPrice: $totalPrice
+  })
+}
+
+query GetFlightSearchesByUser($userId: UUID!) @auth(level: USER) {
+  flightSearches(where: {userId: {eq: $userId}}) {
+    id
+    arrivalAirportCode
+    departureAirportCode
+    departureDate
+    returnDate
+    passengers
+  }
+}
+
+mutation UpdateFlightSearch($id: UUID!, $passengers: Int) @auth(level: USER) {
+  flightSearch_update(key: {id: $id}, data: {passengers: $passengers})
+}
+
+query ListAirports @auth(level: PUBLIC) {
+  airports {
+    id
+    name
+    iataCode
+    city
+    country
+  }
+}

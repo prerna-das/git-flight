@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helicopter Services - Premium Air Travel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Homepage.css">
+    <style>
+        .helicopter-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-details {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            min-height: 80px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature i {
+            color: var(--primary-color);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: slideUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1 class="nav__logo">TravelAir</h1>
+        <ul class="nav__links">
+            <li class="link"><a href="Homepage.html">Home</a></li>
+            <li class="link"><a href="service-selection.html">Services</a></li>
+            <li class="link"><a href="#">About</a></li>
+            <li class="link"><a href="#">Contact</a></li>
+        </ul>
+        <button class="btn">Book Now</button>
+    </nav>
+
+    <section class="section__container">
+        <h2 class="section__header">Helicopter Services</h2>
+        <p class="description">Experience the ultimate in aerial luxury and convenience.</p>
+
+        <div class="helicopter-services">
+            <!-- City Tour -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="../images/imagefolder/londan.png" alt="City Tour">
+                    <div class="service-overlay">
+                        <button class="btn" onclick="selectService('City Tour')">Select Tour</button>
+                    </div>
+                </div>
+                <div class="service-details">
+                    <h3 class="service-title">City Tour</h3>
+                    <p class="service-description">Experience breathtaking views of the city skyline from above.</p>
+                    <p class="service-price">From $999</p>
+                    <ul>
+                        <li>30-minute scenic flight</li>
+                        <li>Professional pilot</li>
+                        <li>Photo opportunities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Airport Transfer -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="../images/imagefolder/maldives.png" alt="Airport Transfer">
+                    <div class="service-overlay">
+                        <button class="btn" onclick="selectService('Airport Transfer')">Select Transfer</button>
+                    </div>
+                </div>
+                <div class="service-details">
+                    <h3 class="service-title">Airport Transfer</h3>
+                    <p class="service-description">Skip the traffic with our exclusive helicopter transfer service.</p>
+                    <p class="service-price">From $1,499</p>
+                    <ul>
+                        <li>Direct transfer</li>
+                        <li>Luggage handling</li>
+                        <li>VIP service</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Corporate Service -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="../images/imagefolder/gerogialake.png" alt="Corporate Service">
+                    <div class="service-overlay">
+                        <button class="btn" onclick="selectService('Corporate Service')">Select Service</button>
+                    </div>
+                </div>
+                <div class="service-details">
+                    <h3 class="service-title">Corporate Service</h3>
+                    <p class="service-description">Efficient business travel solution for executives.</p>
+                    <p class="service-price">From $2,999</p>
+                    <ul>
+                        <li>Customized schedule</li>
+                        <li>Conference calling</li>
+                        <li>Business amenities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Custom Tour -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="../images/imagefolder/desertimage.png" alt="Custom Tour">
+                    <div class="service-overlay">
+                        <button class="btn" onclick="selectService('Custom Tour')">Select Tour</button>
+                    </div>
+                </div>
+                <div class="service-details">
+                    <h3 class="service-title">Custom Tour</h3>
+                    <p class="service-description">Design your own aerial adventure.</p>
+                    <p class="service-price">From $1,999</p>
+                    <ul>
+                        <li>Flexible duration</li>
+                        <li>Custom route</li>
+                        <li>Special occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-form">
+            <h3>Helicopter Service Request</h3>
+            <form id="helicopterForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="serviceType">Selected Service</label>
+                        <input type="text" id="serviceType" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="passengers">Number of Passengers</label>
+                        <select id="passengers" required>
+                            <option value="1">1 passenger</option>
+                            <option value="2">2 passengers</option>
+                            <option value="3">3 passengers</option>
+                            <option value="4">4 passengers</option>
+                            <option value="5">5 passengers</option>
+                            <option value="6">6 passengers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration</label>
+                        <select id="duration" required>
+                            <option value="30">30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="90">1.5 hours</option>
+                            <option value="120">2 hours</option>
+                            <option value="custom">Custom duration</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="special-requests">Special Requests</label>
+                    <textarea id="special-requests" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn">Request Booking</button>
+            </form>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <i>✓</i>
+                <span>Experienced Pilots</span>
+            </div>
+            <div class="feature">
+                <i>✓</i>
+                <span>Modern Fleet</span>
+            </div>
+            <div class="feature">
+                <i>✓</i>
+                <span>Safety First</span>
+            </div>
+            <div class="feature">
+                <i>✓</i>
+                <span>Flexible Booking</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3>TravelAir</h3>
+                <p>Where luxury meets the skies.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Support</h4>
+                <p>FAQs</p>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>Contact Us</p>
+            </div>
+            <div class="footer__col">
+                <h4>Social Media</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function selectService(service) {
+            document.getElementById('serviceType').value = service;
+            document.querySelector('.booking-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('helicopterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your booking request. Our team will contact you shortly to confirm your reservation.');
+        });
+    </script>
+</body>
+</html>

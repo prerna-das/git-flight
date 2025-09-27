@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Information - TravelAir</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation will be included from layout.html -->
+    <div id="nav-placeholder"></div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Passenger Information</h1>
+
+                <!-- Booking Progress -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="ml-2 text-gray-500">Flight Details</span>
+                    </div>
+                    <div class="h-1 w-16 bg-primary"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">2</div>
+                        <span class="ml-2 font-semibold">Passenger Info</span>
+                    </div>
+                    <div class="h-1 w-16 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">3</div>
+                        <span class="ml-2 text-gray-500">Payment</span>
+                    </div>
+                </div>
+
+                <!-- Passenger Form -->
+                <form class="passenger-form space-y-6" id="passengerForm">
+                    <!-- Lead Passenger -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Lead Passenger</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" name="leadFirstName" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" name="leadLastName" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input type="email" name="leadEmail" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                                <input type="tel" name="leadPhone" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth *</label>
+                                <input type="date" name="leadDob" required max="" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Passengers -->
+                    <div id="additionalPassengers">
+                        <!-- Additional passenger forms will be added here dynamically -->
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Emergency Contact</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" name="emergencyFirstName" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" name="emergencyLastName" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                                <input type="tel" name="emergencyPhone" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Relationship *</label>
+                                <select name="emergencyRelationship" required 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="">Select Relationship</option>
+                                    <option value="spouse">Spouse</option>
+                                    <option value="parent">Parent</option>
+                                    <option value="sibling">Sibling</option>
+                                    <option value="child">Child</option>
+                                    <option value="friend">Friend</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Assistance -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Special Assistance</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="mobility" class="mr-2">
+                                    <span>Mobility assistance required</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="medical" class="mr-2">
+                                    <span>Medical assistance required</span>
+                                </label>
+                            </div>
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Additional Requirements</label>
+                                <textarea name="specialAssistance" rows="3" 
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary"
+                                    placeholder="Please specify any special requirements or medical conditions we should be aware of"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold mb-4">Terms and Conditions</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <input type="checkbox" name="termsAccepted" required class="mt-1 mr-2">
+                                <label class="text-sm">
+                                    I confirm that I have read and agree to the 
+                                    <a href="#" class="text-primary hover:underline">Terms and Conditions</a> 
+                                    and <a href="#" class="text-primary hover:underline">Privacy Policy</a>
+                                </label>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" name="safetyBriefing" required class="mt-1 mr-2">
+                                <label class="text-sm">
+                                    I understand that all passengers must attend a safety briefing before the flight
+                                </label>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" name="weightRestriction" required class="mt-1 mr-2">
+                                <label class="text-sm">
+                                    I confirm that all passenger weights provided are accurate for safety calculations
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Continue to Payment
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be included from layout.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/helicopter-services.js"></script>
+    <script>
+        // Include navigation and footer
+        fetch('/html/layout.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                
+                document.getElementById('nav-placeholder').innerHTML = 
+                    doc.querySelector('nav').outerHTML;
+                
+                document.getElementById('footer-placeholder').innerHTML = 
+                    doc.querySelector('footer').outerHTML;
+            });
+
+        // Set maximum date for DOB (must be at least 18 years old)
+        const today = new Date();
+        const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        document.querySelector('input[name="leadDob"]').max = maxDate.toISOString().split('T')[0];
+
+        // Get passenger count from session storage and create additional passenger forms
+        const passengerCount = sessionStorage.getItem('passengerCount') || 1;
+        const additionalPassengersContainer = document.getElementById('additionalPassengers');
+
+        for (let i = 2; i <= passengerCount; i++) {
+            const passengerForm = document.createElement('div');
+            passengerForm.className = 'bg-white rounded-lg shadow p-6';
+            passengerForm.innerHTML = `
+                <h2 class="text-xl font-semibold mb-4">Passenger ${i}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                        <input type="text" name="passenger${i}FirstName" required 
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                        <input type="text" name="passenger${i}LastName" required 
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth *</label>
+                        <input type="date" name="passenger${i}Dob" required max="${maxDate.toISOString().split('T')[0]}" 
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                    </div>
+                </div>
+            `;
+            additionalPassengersContainer.appendChild(passengerForm);
+        }
+
+        // Form validation and submission
+        document.getElementById('passengerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (validateForm()) {
+                // Store passenger details in session storage
+                const formData = new FormData(this);
+                const passengerData = Object.fromEntries(formData.entries());
+                sessionStorage.setItem('passengerData', JSON.stringify(passengerData));
+
+                // Proceed to payment page
+                window.location.href = 'payment.html';
+            }
+        });
+
+        function validateForm() {
+            // Reset error messages
+            hideError();
+
+            // Validate lead passenger email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const email = document.querySelector('input[name="leadEmail"]').value;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email address');
+                return false;
+            }
+
+            // Validate lead passenger phone
+            const phoneRegex = /^\+?[\d\s-]{10,}$/;
+            const phone = document.querySelector('input[name="leadPhone"]').value;
+            if (!phoneRegex.test(phone)) {
+                showError('Please enter a valid phone number');
+                return false;
+            }
+
+            // Validate terms acceptance
+            const terms = document.querySelector('input[name="termsAccepted"]').checked;
+            const safety = document.querySelector('input[name="safetyBriefing"]').checked;
+            const weight = document.querySelector('input[name="weightRestriction"]').checked;
+            if (!terms || !safety || !weight) {
+                showError('Please accept all terms and conditions');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

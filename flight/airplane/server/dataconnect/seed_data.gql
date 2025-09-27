@@ -1,0 +1,38 @@
+mutation SeedAirports @auth(level: USER) {
+  airport_insertMany(
+    data: [
+      {
+        id: "d96999b3-ca01-474e-954c-3a37f403dc0d"
+        city: "Seattle"
+        country: "USA"
+        iataCode: "SEA"
+        name: "Seattle-Tacoma International Airport"
+        timezone: "America/Los_Angeles"
+      }
+      {
+        id: "a8e28b83-8943-4327-ace8-52db1d88a76d"
+        city: "Los Angeles"
+        country: "USA"
+        iataCode: "LAX"
+        name: "Los Angeles International Airport"
+        timezone: "America/Los_Angeles"
+      }
+      {
+        id: "e676c5ca-8f46-4b92-ac40-a6e165392959"
+        city: "London"
+        country: "United Kingdom"
+        iataCode: "LHR"
+        name: "Heathrow Airport"
+        timezone: "Europe/London"
+      }
+      {
+        id: "3e084e13-943c-499f-92ca-5f15b24bf689"
+        city: "Tokyo"
+        country: "Japan"
+        iataCode: "HND"
+        name: "Tokyo International Airport (Haneda)"
+        timezone: "Asia/Tokyo"
+      }
+    ]
+  )
+}

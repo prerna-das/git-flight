@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelAir - Premium Travel Services</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Mega Menu Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="/" class="flex items-center space-x-2">
+                    <i class="fas fa-plane-departure text-primary text-3xl"></i>
+                    <span class="text-2xl font-bold text-gray-800">TravelAir</span>
+                </a>
+
+                <!-- Main Navigation -->
+                <div class="hidden md:flex space-x-1">
+                    <!-- Commercial Flights Dropdown -->
+                    <div class="group relative">
+                        <button class="nav-link px-4 py-2 flex items-center">
+                            <i class="fas fa-plane-departure mr-2"></i>
+                            Flights
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-80 bg-white shadow-xl rounded-lg p-4 hidden group-hover:block">
+                            <div class="grid grid-cols-2 gap-4">
+                                <a href="/html/flights/search.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Search Flights</div>
+                                    <p class="text-sm text-gray-600">Find the best deals</p>
+                                </a>
+                                <a href="/html/flights/schedule.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Flight Schedule</div>
+                                    <p class="text-sm text-gray-600">Check timings</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Private Jets Dropdown -->
+                    <div class="group relative">
+                        <button class="nav-link px-4 py-2 flex items-center">
+                            <i class="fas fa-jet-fighter mr-2"></i>
+                            Private Jets
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-96 bg-white shadow-xl rounded-lg p-4 hidden group-hover:block">
+                            <div class="grid grid-cols-3 gap-4">
+                                <a href="/html/private-jets/fleet.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Our Fleet</div>
+                                    <p class="text-sm text-gray-600">Explore our jets</p>
+                                </a>
+                                <a href="/html/private-jets/charter.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Charter Now</div>
+                                    <p class="text-sm text-gray-600">Book a private jet</p>
+                                </a>
+                                <a href="/html/private-jets/membership.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Jet Card</div>
+                                    <p class="text-sm text-gray-600">Membership benefits</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Helicopter Services Dropdown -->
+                    <div class="group relative">
+                        <button class="nav-link px-4 py-2 flex items-center">
+                            <i class="fas fa-helicopter mr-2"></i>
+                            Helicopters
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-96 bg-white shadow-xl rounded-lg p-4 hidden group-hover:block">
+                            <div class="grid grid-cols-2 gap-4">
+                                <a href="/html/helicopters/tours.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">City Tours</div>
+                                    <p class="text-sm text-gray-600">Scenic flights</p>
+                                </a>
+                                <a href="/html/helicopters/transfer.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Airport Transfer</div>
+                                    <p class="text-sm text-gray-600">Quick transport</p>
+                                </a>
+                                <a href="/html/helicopters/charter.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Private Charter</div>
+                                    <p class="text-sm text-gray-600">Custom flights</p>
+                                </a>
+                                <a href="/html/helicopters/events.html" class="hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Special Events</div>
+                                    <p class="text-sm text-gray-600">Celebrations & more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Luxury Services Dropdown -->
+                    <div class="group relative">
+                        <button class="nav-link px-4 py-2 flex items-center">
+                            <i class="fas fa-crown mr-2"></i>
+                            Luxury
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-80 bg-white shadow-xl rounded-lg p-4 hidden group-hover:block">
+                            <div class="space-y-4">
+                                <a href="/html/luxury/concierge.html" class="block hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Concierge Service</div>
+                                    <p class="text-sm text-gray-600">Personal assistance</p>
+                                </a>
+                                <a href="/html/luxury/events.html" class="block hover:bg-gray-50 p-2 rounded">
+                                    <div class="font-semibold">Event Planning</div>
+                                    <p class="text-sm text-gray-600">Special occasions</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deals Link -->
+                    <a href="/html/deals.html" class="nav-link px-4 py-2 flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        Deals
+                    </a>
+                </div>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Search -->
+                    <button class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- My Trips -->
+                    <a href="/html/account/trips.html" class="hidden md:flex items-center space-x-1 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-suitcase"></i>
+                        <span>My Trips</span>
+                    </a>
+
+                    <!-- User Account -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-user-circle text-xl"></i>
+                            <span class="hidden md:inline">Account</span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 hidden group-hover:block">
+                            <a href="/html/account/login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Login</a>
+                            <a href="/html/account/register.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Register</a>
+                            <a href="/html/account/profile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                            <a href="/html/account/bookings.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Bookings</a>
+                            <div class="border-t my-2"></div>
+                            <a href="/html/account/settings.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                            <button onclick="logout()" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600 hover:text-gray-900" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="hidden md:hidden" id="mobileMenu">
+            <!-- Mobile menu content -->
+            <ul class="mobile-nav__links">
+                <li><a href="/Homepage.html">Home</a></li>
+                <li><a href="/index.html">Main Platform</a></li>
+                <li><a href="/html/flights/search.html">Flights</a></li>
+                <li><a href="/html/private-jets/fleet.html">Private Jets</a></li>
+                <li><a href="/html/helicopters/charter.html">Helicopter Charter</a></li>
+                <li><a href="/admin">Admin Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <main class="pt-20">
+        <!-- Content will be injected here -->
+        <div id="pageContent"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TravelAir</h3>
+                    <p class="text-gray-400">Your premium travel partner</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/html/flights/search.html" class="text-gray-400 hover:text-white">Flights</a></li>
+                        <li><a href="/html/private-jets/fleet.html" class="text-gray-400 hover:text-white">Private Jets</a></li>
+                        <li><a href="/html/helicopters/tours.html" class="text-gray-400 hover:text-white">Helicopter Services</a></li>
+                        <li><a href="/html/luxury/concierge.html" class="text-gray-400 hover:text-white">Luxury Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/html/about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="/html/contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="/html/careers.html" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="/html/press.html" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 TravelAir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

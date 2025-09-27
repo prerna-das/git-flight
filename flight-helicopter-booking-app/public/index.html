@@ -8,9 +8,29 @@
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <!-- Navigation Breadcrumb -->
-    <nav class="absolute top-4 left-4 z-50" id="breadcrumb"></nav>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-50 p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-2xl font-bold">FlightBook</a>
+            <div class="flex items-center space-x-4">
+                <a href="/Homepage.html" class="text-white hover:text-gray-200 px-4 py-2">Home</a>
+                <a href="/index.html" class="text-white hover:text-gray-200 px-4 py-2">Main Platform</a>
+                <a href="/html/flights/search.html" class="text-white hover:text-gray-200 px-4 py-2">Flights</a>
+                <a href="/html/private-jets/fleet.html" class="text-white hover:text-gray-200 px-4 py-2">Private Jets</a>
+                <a href="/html/helicopters/charter.html" class="text-white hover:text-gray-200 px-4 py-2">Helicopter Charter</a>
+                <a href="/admin" class="text-white hover:text-gray-200 px-4 py-2">Admin Dashboard</a>
+                <div id="auth-links">
+                    <a href="login.html" class="text-white hover:text-gray-200 px-4 py-2">Login</a>
+                    <a href="signup.html" class="bg-white text-primary-800 hover:bg-gray-200 font-semibold px-4 py-2 rounded-md shadow-md transition-colors">Sign Up</a>
+                </div>
+                <div id="user-info" class="hidden items-center space-x-4">
+                    <span id="user-email" class="text-white"></span>
+                    <button id="logout-btn" class="text-white hover:text-gray-200">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -24,100 +44,96 @@
         <!-- Content -->
         <div class="relative z-10 container mx-auto px-4" data-aos="fade-up">
             <div class="text-center text-white space-y-6">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Luxury in the Sky</h1>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Find Your Next Flight</h1>
                 <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-                    Experience exclusive helicopter tours and private jet charters
+                    Search and book flights with ease.
                 </p>
 
-                <!-- Booking Options -->
+                <!-- Flight Search Form -->
                 <div class="mt-12 max-w-4xl mx-auto">
                     <div class="card bg-white/90 backdrop-blur-md">
-                        <form id="booking-form" class="space-y-6">
-                            <!-- Service Type -->
-                            <div class="flex justify-center space-x-4">
-                                <button type="button" class="btn-primary active" data-service="helicopter">
-                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5z"></path>
-                                    </svg>
-                                    Helicopter Tour
-                                </button>
-                                <button type="button" class="btn-secondary" data-service="jet">
-                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 18l3.5-2 3.5 2L15 16l3 2V8l-3-2-3 2-3.5-2L5 8v10z"></path>
-                                    </svg>
-                                    Private Jet
-                                </button>
-                            </div>
-
+                        <form id="flight-search-form" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- From -->
                                 <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Departure</label>
+                                    <label class="block text-sm font-medium text-gray-700">From (Airport Code)</label>
                                     <input type="text" 
                                            class="input-field" 
-                                           placeholder="Departure Location"
-                                           id="departure">
+                                           placeholder="e.g., JFK"
+                                           id="departure_id" required>
                                 </div>
                                 
                                 <!-- To -->
                                 <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Destination</label>
+                                    <label class="block text-sm font-medium text-gray-700">To (Airport Code)</label>
                                     <input type="text" 
                                            class="input-field" 
-                                           placeholder="Destination Location"
-                                           id="destination">
+                                           placeholder="e.g., LAX"
+                                           id="arrival_id" required>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <!-- Date -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Outbound Date -->
                                 <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Date</label>
+                                    <label class="block text-sm font-medium text-gray-700">Outbound Date</label>
                                     <input type="date" 
                                            class="input-field" 
-                                           id="date">
+                                           id="outbound_date" required>
                                 </div>
 
-                                <!-- Time -->
+                                <!-- Return Date -->
                                 <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Time</label>
-                                    <input type="time" 
+                                    <label class="block text-sm font-medium text-gray-700">Return Date (Optional)</label>
+                                    <input type="date" 
                                            class="input-field" 
-                                           id="time">
-                                </div>
-
-                                <!-- Passengers -->
-                                <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Passengers</label>
-                                    <select class="input-field" id="passengers">
-                                        <option value="1">1 Passenger</option>
-                                        <option value="2">2 Passengers</option>
-                                        <option value="3">3 Passengers</option>
-                                        <option value="4">4 Passengers</option>
-                                        <option value="5">5+ Passengers</option>
-                                    </select>
+                                           id="return_date">
                                 </div>
                             </div>
-
-                            <!-- Additional Options -->
-                            <div class="space-y-4">
-                                <label class="block text-sm font-medium text-gray-700">Additional Services</label>
-                                <div class="flex flex-wrap gap-2" id="services-chips">
-                                    <!-- Chips will be added here dynamically -->
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Adults -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Adults</label>
+                                    <select class="input-field" id="adults">
+                                        <option value="1">1 Adult</option>
+                                        <option value="2">2 Adults</option>
+                                        <option value="3">3 Adults</option>
+                                        <option value="4">4 Adults</option>
+                                        <option value="5">5+ Adults</option>
+                                    </select>
+                                </div>
+                                <!-- Currency -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Currency</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           placeholder="e.g., USD"
+                                           id="currency" value="USD">
                                 </div>
                             </div>
 
                             <div class="flex justify-center">
                                 <button type="submit" class="btn-accent">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                     </svg>
-                                    Book Now
+                                    Search Flights
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Results Section -->
+    <section id="flight-results-section" class="py-20 bg-white hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Search Results</h2>
+            <div id="flight-results" class="space-y-6">
+                <!-- Flight results will be injected here -->
             </div>
         </div>
     </section>
@@ -268,5 +284,7 @@
         <p>&copy; 2023 Flight and Helicopter Booking. All rights reserved.</p>
     </footer>
     <script src="js/app.js"></script>
+    <script type="module" src="js/flights.js"></script>
+    <script type="module" src="js/auth.js"></script>
 </body>
 </html>
