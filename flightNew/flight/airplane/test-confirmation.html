@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Confirmation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-cases {
+            margin-bottom: 30px;
+        }
+        .test-case {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .test-case h3 {
+            margin-top: 0;
+        }
+        .test-case a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .test-case a:hover {
+            background-color: #45a049;
+        }
+        .note {
+            background-color: #fffde7;
+            border-left: 4px solid #ffd600;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Confirmation Page</h1>
+    
+    <div class="note">
+        <p>This page helps you test the confirmation page with different booking scenarios.</p>
+        <p>Note: This is for testing purposes only and uses mock data.</p>
+    </div>
+
+    <div class="test-cases">
+        <h2>Test Cases</h2>
+        
+        <div class="test-case">
+            <h3>1. Confirmed Booking</h3>
+            <p>Test a booking with confirmed payment status.</p>
+            <p>Booking ID: <code>BOOK123</code></p>
+            <a href="confirmation.html?bookingId=BOOK123" target="_blank">Test Confirmed Booking</a>
+        </div>
+        
+        <div class="test-case">
+            <h3>2. Pending Payment</h3>
+            <p>Test a booking with pending payment status.</p>
+            <p>Booking ID: <code>BOOK124</code></p>
+            <a href="confirmation.html?bookingId=BOOK124" target="_blank">Test Pending Payment</a>
+        </div>
+        
+        <div class="test-case">
+            <h3>3. Invalid Booking ID</h3>
+            <p>Test with a non-existent booking ID.</p>
+            <p>Booking ID: <code>INVALID123</code></p>
+            <a href="confirmation.html?bookingId=INVALID123" target="_blank">Test Invalid Booking</a>
+        </div>
+        
+        <div class="test-case">
+            <h3>4. No Booking ID</h3>
+            <p>Test without providing a booking ID.</p>
+            <a href="confirmation.html" target="_blank">Test No Booking ID</a>
+        </div>
+    </div>
+    
+    <div class="test-cases">
+        <h2>Test Redirect from Old URL</h2>
+        <p>Test the backward compatibility with the old confirmed.html URL.</p>
+        <div class="test-case">
+            <h3>Redirect Test</h3>
+            <p>This should redirect to confirmation.html with the same parameters.</p>
+            <a href="confirmed.html?bookingId=BOOK123" target="_blank">Test Redirect</a>
+        </div>
+    </div>
+</body>
+</html>

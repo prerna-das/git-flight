@@ -1,0 +1,59 @@
+/* Autocomplete styles */
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-items div {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.autocomplete-items div:hover {
+  background-color: #f1f1f1;
+}
+
+.autocomplete-items div strong {
+  font-weight: 500;
+  color: #333;
+}
+
+.autocomplete-items div span {
+  color: #666;
+  font-size: 0.9em;
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+.autocomplete-active {
+  background-color: #e9f5ff !important;
+  color: #1a73e8;
+}
+
+.autocomplete-active strong {
+  color: #1a73e8 !important;
+}
+
+/* Make sure the input group is relative for absolute positioning */
+.input__group {
+  position: relative;
+}
